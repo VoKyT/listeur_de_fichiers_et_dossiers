@@ -16,7 +16,6 @@ yarn-error.log*
 # 🏗️ Build et distribution
 dist/
 build/
-*.exe
 *.app
 *.dmg
 *.pkg

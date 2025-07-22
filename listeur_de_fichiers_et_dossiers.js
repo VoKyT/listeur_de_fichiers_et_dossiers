@@ -4,19 +4,54 @@
 
 const fs = require('fs');
 const path = require('path');
-const { spawn } = require('child_process');
+const { spawn, execSync } = require('child_process');
 
 // Fonction pour afficher une pop-up Windows (version non-bloquante pour yao-pkg)
 function showPopup(title, message) {
   try {
-    // Version non-bloquante avec spawn pour yao-pkg
-    const child = spawn('msg', ['*', `/time:15`, `${title}\n\n${message}`], {
-      stdio: 'ignore',
-      detached: true
-    });
-    child.unref();
+    console.log(`🔔 Tentative d'affichage popup: ${title}`);
+    
+    // Nettoie le message pour PowerShell
+    const cleanTitle = title.replace(/'/g, "''").replace(/"/g, '""');
+    const cleanMessage = message
+      .replace(/'/g, "''")
+      .replace(/"/g, '""')
+      .replace(/\n/g, ' | ')  // Remplace les sauts de ligne par des séparateurs
+      .replace(/\r/g, '');    // Supprime les retours chariot
+    
+    // Version PowerShell synchrone pour s'assurer que le popup s'affiche
+    const powershellCmd = `Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('${cleanMessage}', '${cleanTitle}', 'OK', 'Information')`;
+    
+    try {
+      const result = execSync(`powershell.exe -Command "${powershellCmd}"`, { 
+        encoding: 'utf8',
+        timeout: 10000 
+      });
+      console.log(`✅ Popup affiché avec succès: ${title} - Résultat: ${result.trim()}`);
+    } catch (execError) {
+      console.log(`❌ Erreur execSync, tentative spawn: ${execError.message}`);
+      
+      // Fallback avec spawn
+      const child = spawn('powershell.exe', ['-Command', powershellCmd], {
+        stdio: ['ignore', 'pipe', 'pipe']
+      });
+      
+      child.stdout.on('data', (data) => {
+        console.log(`📄 Stdout popup: ${data.toString().trim()}`);
+      });
+      
+      child.stderr.on('data', (data) => {
+        console.log(`⚠️ Stderr popup: ${data.toString().trim()}`);
+      });
+      
+      child.on('close', (code) => {
+        console.log(`🔚 Popup fermé avec code: ${code}`);
+      });
+    }
+    
   } catch (error) {
-    // Si msg.exe échoue, affiche dans la console
+    // Si PowerShell échoue complètement, affiche dans la console
+    console.log(`❌ Erreur popup complète, affichage console: ${error.message}`);
     console.log(`\n=== ${title} ===`);
     console.log(message);
     console.log('========================\n');

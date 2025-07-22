@@ -2,8 +2,8 @@
 LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT
 ================================================================================
 Dossier racine analysé: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers
-Date de génération: 22/07/2025 20:40:04
-STATISTIQUES: 13 dossiers, 8 fichiers
+Date de génération: 22/07/2025 21:45:37
+STATISTIQUES: 8 dossiers, 26 fichiers
 Mode: Exploration récursive avec structure arborescente
 
 ⚠️  EXCLUSIONS: node_modules/, dossiers cachés (.*), $RECYCLE.BIN
@@ -12,19 +12,32 @@ Mode: Exploration récursive avec structure arborescente
 
 STRUCTURE ARBORESCENTE:
 --------------------------------------------------
-├── 1. archives_anciennes_versions/
+├── 1. archives_anciennes_versions/ (6 fichiers)
+│   ├── 1. liste_de_fichiers_et_dossiers copy.txt
+│   ├── 2. liste_dossiers.bat
+│   ├── 3. listeur_backup.js
+│   ├── 4. listeur_de_fichiers.bat
+│   ├── 5. listeur_de_fichiers.js
+│   └── 6. listeur_de_fichiers.py
 ├── 2. lol/
-├── 3. src/ (4 dossiers)
-│   ├── 1. config/
-│   ├── 2. core/
-│   ├── 3. services/
-│   └── 4. utils/
-├── 4. testtttt/ (2 dossiers)
+├── 3. testtttt/ (2 dossiers)
 │   ├── 1. ouiiii/
 │   └── 2. tstttttt/ (1 dossier)
 │       └── 1. ttttttttt/ (2 dossiers)
 │           ├── 1. hah/
-│           └── 2. test/
+│           └── 2. test/ (12 fichiers)
+│               ├── 01. dgfcv
+│               ├── 02. ertfyg
+│               ├── 03. esdgfh
+│               ├── 04. i
+│               ├── 05. iii
+│               ├── 06. p
+│               ├── 07. tfghb
+│               ├── 08. tfhg
+│               ├── 09. tfhgjkl
+│               ├── 10. tfhjn
+│               ├── 11. uhkj
+│               └── 12. ygjh
 ├── 1. .gitattributes
 ├── 2. .gitignore
 ├── 3. CHANGELOG.md
@@ -36,6 +49,6 @@ STRUCTURE ARBORESCENTE:
 
 ================================================================================
 Fin de l'exploration récursive
-TOTAL: 21 éléments trouvés
+TOTAL: 34 éléments trouvés
 (Exclusions: node_modules/, dossiers cachés, fichiers système)
 ================================================================================
