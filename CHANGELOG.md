@@ -12,6 +12,20 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.2] - 2025-07-22
+
+### 🎯 Amélioré
+- **Syntaxe unifiée** : Harmonisation complète de tous les formats de sortie dans le fichier txt
+- **Cohérence des titres** : Tous les labels en MAJUSCULES avec deux-points (ex: `DATE DE GÉNÉRATION:`)
+- **Sections exclusions** : Format uniforme avec listes à puces dans l'en-tête ET la conclusion
+- **Séparateurs standardisés** : Utilisation cohérente des `=` (80 caractères) partout
+- **Présentation professionnelle** : Syntaxe identique dans toutes les sections pour une meilleure lisibilité
+
+### 🔧 Optimisé
+- **Code simplifié** : Réduction significative des redondances dans le code source
+- **Performance améliorée** : Structures de données optimisées (Set vs Array)
+- **Maintenabilité** : Fonctions consolidées et logique unifiée
+
 ## [3.1.1] - 2025-07-22
 
 ### ✨ Ajouté

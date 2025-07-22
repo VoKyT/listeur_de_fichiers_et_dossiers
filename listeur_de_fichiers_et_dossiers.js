@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // listeur_de_fichiers_et_dossiers.js
-// Script Node.js pour lister fichiers et dossiers du répertoire courant - Version YAO-PKG v3.1.1
-// Popups PowerShell natifs + Compteur répertoire racine
+// Script Node.js pour lister fichiers et dossiers du répertoire courant - Version YAO-PKG v3.1.2
+// Popups PowerShell natifs + Compteur répertoire racine + Syntaxe unifiée
 
 const fs = require('fs');
 const path = require('path');
@@ -21,20 +21,17 @@ function formatDuration(milliseconds) {
   }
 }
 
-// Fonction pour afficher une pop-up Windows (version non-bloquante pour yao-pkg)
+// Fonction pour afficher une pop-up Windows
 function showPopup(title, message) {
   try {
     console.log(`🔔 Tentative d'affichage popup: ${title}`);
     
-    // Nettoie le message pour PowerShell
-    const cleanTitle = title.replace(/'/g, "''").replace(/"/g, '""');
+    // Nettoie le message pour PowerShell (une seule fois)
+    const cleanTitle = title.replace(/['"]/g, match => match === "'" ? "''" : '""');
     const cleanMessage = message
-      .replace(/'/g, "''")
-      .replace(/"/g, '""')
-      .replace(/\n/g, ' | ')  // Remplace les sauts de ligne par des séparateurs
-      .replace(/\r/g, '');    // Supprime les retours chariot
+      .replace(/['"]/g, match => match === "'" ? "''" : '""')
+      .replace(/[\r\n]/g, ' | ');
     
-    // Version PowerShell synchrone pour s'assurer que le popup s'affiche
     const powershellCmd = `Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('${cleanMessage}', '${cleanTitle}', 'OK', 'Information')`;
     
     try {
@@ -46,69 +43,45 @@ function showPopup(title, message) {
     } catch (execError) {
       console.log(`❌ Erreur execSync, tentative spawn: ${execError.message}`);
       
-      // Fallback avec spawn
-      const child = spawn('powershell.exe', ['-Command', powershellCmd], {
-        stdio: ['ignore', 'pipe', 'pipe']
-      });
-      
-      child.stdout.on('data', (data) => {
-        console.log(`📄 Stdout popup: ${data.toString().trim()}`);
-      });
-      
-      child.stderr.on('data', (data) => {
-        console.log(`⚠️ Stderr popup: ${data.toString().trim()}`);
-      });
-      
-      child.on('close', (code) => {
-        console.log(`🔚 Popup fermé avec code: ${code}`);
-      });
+      // Fallback avec spawn simplifié
+      spawn('powershell.exe', ['-Command', powershellCmd], { stdio: 'ignore' });
     }
     
   } catch (error) {
-    // Si PowerShell échoue complètement, affiche dans la console
-    console.log(`❌ Erreur popup complète, affichage console: ${error.message}`);
-    console.log(`\n=== ${title} ===`);
-    console.log(message);
-    console.log('========================\n');
+    // Fallback console
+    console.log(`❌ Erreur popup, affichage console: ${error.message}`);
+    console.log(`\n=== ${title} ===\n${message}\n${'='.repeat(24)}\n`);
   }
 }
 
-// Chemin du dossier à scanner (détection automatique pour yao-pkg)
+// Configuration et initialisation
 const directory = process.pkg ? process.cwd() : __dirname;
-
-// Fichier de sortie
 const outputFile = path.join(directory, 'liste_de_fichiers_et_dossiers.txt');
 const outputFileName = path.basename(outputFile);
+const scriptName = path.basename(__filename);
+const exeName = 'listeur_de_fichiers_et_dossiers.exe';
+const hasNodeModules = fs.existsSync(path.join(directory, 'node_modules'));
 
-// 🕐 Début du chronomètre
+// Démarrage du chronomètre
 const startTime = Date.now();
 console.log('⏱️ Démarrage du chronomètre...');
 
-// Pop-up d'information au début
 showPopup(
   'Listeur de fichiers et dossiers - RÉCURSIF',
   `Ce programme explore RÉCURSIVEMENT tous les sous-dossiers et enregistre la liste complète dans "${outputFileName}"`
 );
 
-// Nom de ce script et de l'exécutable pour les exclure de la liste
-const scriptName = path.basename(__filename);
-const exeName = 'listeur_de_fichiers_et_dossiers.exe';
-
-// Vérification de l'existence de node_modules
-const hasNodeModules = fs.existsSync(path.join(directory, 'node_modules'));
-
-// 🔍 Fonction récursive pour explorer tous les sous-dossiers
+// Fonction récursive pour explorer tous les sous-dossiers
 function exploreDirectory(dirPath, relativePath = '') {
   const results = { dirs: [], files: [] };
+  const excludedDirs = new Set(['.git', 'node_modules', '$RECYCLE.BIN']);
   
   try {
     const entries = fs.readdirSync(dirPath);
     
-    entries.forEach(name => {
+    for (const name of entries) {
       // Évite les fichiers système et notre propre script/exe
-      if (name === scriptName || name === exeName || name === path.basename(outputFile)) {
-        return;
-      }
+      if (name === scriptName || name === exeName || name === outputFileName) continue;
       
       const fullPath = path.join(dirPath, name);
       const relativeItemPath = path.join(relativePath, name);
@@ -117,8 +90,8 @@ function exploreDirectory(dirPath, relativePath = '') {
         const stats = fs.statSync(fullPath);
         
         if (stats.isDirectory()) {
-          // Évite certains dossiers système/cachés problématiques
-          if (!name.startsWith('.') && name !== 'node_modules' && name !== '$RECYCLE.BIN') {
+          // Évite les dossiers système/cachés
+          if (!name.startsWith('.') && !excludedDirs.has(name)) {
             results.dirs.push(relativeItemPath || name);
             
             // Exploration récursive du sous-dossier
@@ -130,10 +103,9 @@ function exploreDirectory(dirPath, relativePath = '') {
           results.files.push(relativeItemPath || name);
         }
       } catch (error) {
-        // Ignore les fichiers/dossiers inaccessibles (permissions, etc.)
         console.log(`⚠️ Accès refusé: ${relativeItemPath || name}`);
       }
-    });
+    }
     
   } catch (error) {
     console.log(`❌ Erreur lors de l'exploration de ${dirPath}: ${error.message}`);
@@ -149,52 +121,17 @@ console.log('📁 Analyse de tous les sous-dossiers...');
 function buildHierarchicalOutput(directory, allDirs, allFiles) {
   const outputLines = [];
   
-  // Fonction pour compter les fichiers DIRECTS dans un dossier (non récursif)
-  function countFilesInDirectory(dirPath) {
-    const relativePath = path.relative(directory, dirPath).replace(/\\/g, '/');
-    let count = 0;
-    
-    allFiles.forEach(file => {
-      const fileRelative = file.replace(/\\/g, '/');
-      if (relativePath === '') {
-        // Pour la racine, cherche les fichiers de niveau 1
-        if (!fileRelative.includes('/')) {
-          count++;
-        }
-      } else {
-        // Pour les autres dossiers, cherche les fichiers directs seulement
-        if (fileRelative.startsWith(relativePath + '/') && 
-            fileRelative.replace(relativePath + '/', '').indexOf('/') === -1) {
-          count++;
-        }
+  // Fonction optimisée pour compter les éléments directs
+  function countDirectElements(items, targetPath) {
+    const normalizedTarget = targetPath.replace(/\\/g, '/');
+    return items.filter(item => {
+      const normalized = item.replace(/\\/g, '/');
+      if (normalizedTarget === '') {
+        return !normalized.includes('/');
       }
-    });
-    
-    return count;
-  }
-  
-  // Fonction pour compter les dossiers DIRECTS dans un dossier (non récursif)
-  function countDirsInDirectory(dirPath) {
-    const relativePath = path.relative(directory, dirPath).replace(/\\/g, '/');
-    let count = 0;
-    
-    allDirs.forEach(dir => {
-      const dirRelative = dir.replace(/\\/g, '/');
-      if (relativePath === '') {
-        // Pour la racine, cherche les dossiers de niveau 1
-        if (!dirRelative.includes('/')) {
-          count++;
-        }
-      } else {
-        // Pour les autres dossiers, cherche les sous-dossiers directs seulement
-        if (dirRelative.startsWith(relativePath + '/') && 
-            dirRelative.replace(relativePath + '/', '').indexOf('/') === -1) {
-          count++;
-        }
-      }
-    });
-    
-    return count;
+      return normalized.startsWith(normalizedTarget + '/') && 
+             normalized.replace(normalizedTarget + '/', '').indexOf('/') === -1;
+    }).length;
   }
   
   // Fonction récursive pour traiter un dossier et son contenu
@@ -249,18 +186,15 @@ function buildHierarchicalOutput(directory, allDirs, allFiles) {
       const dirName = path.basename(dir);
       
       // Compte les fichiers et dossiers dans ce dossier
-      const fileCount = countFilesInDirectory(fullChildPath);
-      const dirCount = countDirsInDirectory(fullChildPath);
+      const relativePath = path.relative(directory, fullChildPath).replace(/\\/g, '/');
+      const fileCount = countDirectElements(allFiles, relativePath);
+      const dirCount = countDirectElements(allDirs, relativePath);
       
-      // Construit l'affichage du compteur
-      let counterDisplay = '';
-      if (dirCount > 0 && fileCount > 0) {
-        counterDisplay = ` (${dirCount} dossier${dirCount > 1 ? 's' : ''} - ${fileCount} fichier${fileCount > 1 ? 's' : ''})`;
-      } else if (dirCount > 0) {
-        counterDisplay = ` (${dirCount} dossier${dirCount > 1 ? 's' : ''})`;
-      } else if (fileCount > 0) {
-        counterDisplay = ` (${fileCount} fichier${fileCount > 1 ? 's' : ''})`;
-      }
+      // Construit l'affichage du compteur optimisé
+      const counterParts = [];
+      if (dirCount > 0) counterParts.push(`${dirCount} dossier${dirCount > 1 ? 's' : ''}`);
+      if (fileCount > 0) counterParts.push(`${fileCount} fichier${fileCount > 1 ? 's' : ''}`);
+      const counterDisplay = counterParts.length ? ` (${counterParts.join(' - ')})` : '';
       
       // Numérotation locale des dossiers avec formatage adaptatif
       const localDirNumber = (index + 1).toString().padStart(dirDigits, '0');
@@ -315,33 +249,35 @@ const hierarchicalLines = buildHierarchicalOutput(directory, dirs, files);
 const rootFiles = files.filter(file => !file.includes('/') && !file.includes('\\')).length;
 const rootDirs = dirs.filter(dir => !dir.includes('/') && !dir.includes('\\')).length;
 
-// Construction du message de compteur pour la racine
-let rootCounterMessage = '';
-if (rootDirs > 0 && rootFiles > 0) {
-  rootCounterMessage = ` (${rootDirs} dossier${rootDirs > 1 ? 's' : ''} - ${rootFiles} fichier${rootFiles > 1 ? 's' : ''})`;
-} else if (rootDirs > 0) {
-  rootCounterMessage = ` (${rootDirs} dossier${rootDirs > 1 ? 's' : ''})`;
-} else if (rootFiles > 0) {
-  rootCounterMessage = ` (${rootFiles} fichier${rootFiles > 1 ? 's' : ''})`;
-}
+// Construction du message de compteur pour la racine avec logique simplifiée
+const buildRootCounter = (dirs, files) => {
+  const counters = [];
+  if (dirs > 0) counters.push(`${dirs} dossier${dirs > 1 ? 's' : ''}`);
+  if (files > 0) counters.push(`${files} fichier${files > 1 ? 's' : ''}`);
+  return counters.length > 0 ? ` (${counters.join(' - ')})` : '';
+};
+
+const rootCounterMessage = buildRootCounter(rootDirs, rootFiles);
 
 // En-tête du fichier
 const outputLines = [];
 outputLines.push('='.repeat(80));
 outputLines.push('LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT');
 outputLines.push('='.repeat(80));
-outputLines.push(`Dossier racine analysé: ${directory}`);
-outputLines.push(`Date de génération: ${now}`);
+outputLines.push(`DOSSIER RACINE ANALYSÉ: ${directory}`);
+outputLines.push(`DATE DE GÉNÉRATION: ${now}`);
 outputLines.push(`STATISTIQUES: ${dirs.length} dossiers, ${files.length} fichiers`);
 outputLines.push(`TEMPS D'EXPLORATION: ${formatDuration(explorationDuration)}`);
-outputLines.push('Mode: Exploration récursive avec structure arborescente');
+outputLines.push('MODE: Exploration récursive avec structure arborescente');
 outputLines.push('');
-outputLines.push('⚠️  EXCLUSIONS: node_modules/, dossiers cachés (.*), $RECYCLE.BIN');
-outputLines.push('   (Les dépendances npm ne sont pas comptabilisées)');
+outputLines.push('⚠️  EXCLUSIONS APPLIQUÉES:');
+outputLines.push('   • node_modules/ (dépendances npm)');
+outputLines.push('   • Dossiers cachés (.*)'); 
+outputLines.push('   • Fichiers système ($RECYCLE.BIN)');
 outputLines.push('='.repeat(80));
 outputLines.push('');
 outputLines.push('STRUCTURE ARBORESCENTE:');
-outputLines.push('-'.repeat(50));
+outputLines.push('='.repeat(80));
 outputLines.push(`📁 ${path.basename(directory)}/${rootCounterMessage}`);
 
 // Ajoute l'arborescence
@@ -349,10 +285,16 @@ outputLines.push(...hierarchicalLines);
 
 outputLines.push('');
 outputLines.push('='.repeat(80));
-outputLines.push('Fin de l\'exploration récursive');
-outputLines.push(`TOTAL: ${dirs.length + files.length} éléments trouvés`);
+outputLines.push('RÉSUMÉ DE L\'EXPLORATION RÉCURSIVE');
+outputLines.push('='.repeat(80));
+outputLines.push(`TOTAL GÉNÉRAL: ${dirs.length + files.length} éléments trouvés`);
+outputLines.push(`DÉTAIL: ${dirs.length} dossiers, ${files.length} fichiers`);
 outputLines.push(`TEMPS D'EXPLORATION: ${formatDuration(explorationDuration)}`);
-outputLines.push('(Exclusions: node_modules/, dossiers cachés, fichiers système)');
+outputLines.push('');
+outputLines.push('⚠️  EXCLUSIONS APPLIQUÉES:');
+outputLines.push('   • node_modules/ (dépendances npm)');
+outputLines.push('   • Dossiers cachés (.*)');
+outputLines.push('   • Fichiers système ($RECYCLE.BIN)');
 outputLines.push('='.repeat(80));
 
 // Écrit chaque élément un par ligne dans le fichier de sortie

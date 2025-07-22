@@ -1,6 +1,6 @@
 {
   "name": "listeur_de_fichiers_et_dossiers",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Listeur récursif de fichiers et dossiers avec format arborescent et popups PowerShell - Build avec yao-pkg",
   "main": "listeur_de_fichiers_et_dossiers.js",
   "type": "commonjs",
