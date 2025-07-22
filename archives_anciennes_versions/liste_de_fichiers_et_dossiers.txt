@@ -1,0 +1,73 @@
+================================================================================
+LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT
+================================================================================
+Dossier racine analysé: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers
+Date de génération: 22/07/2025 20:17:13
+STATISTIQUES: 13 dossiers, 40 fichiers
+Mode: Exploration récursive avec structure arborescente
+
+⚠️  EXCLUSIONS: node_modules/, dossiers cachés (.*), $RECYCLE.BIN
+   (Les dépendances npm ne sont pas comptabilisées)
+================================================================================
+
+STRUCTURE ARBORESCENTE:
+--------------------------------------------------
+├── 1. archives_anciennes_versions/ (9 fichiers)
+│   ├── 1. lanceur.js
+│   ├── 2. lanceur_interactif.js
+│   ├── 3. lanceur_simple.bat
+│   ├── 4. liste_de_fichiers_et_dossiers copy.txt
+│   ├── 5. liste_dossiers.bat
+│   ├── 6. listeur_backup.js
+│   ├── 7. listeur_de_fichiers.bat
+│   ├── 8. listeur_de_fichiers.js
+│   └── 9. listeur_de_fichiers.py
+├── 2. lol/ (1 fichier)
+│   └── 1. pjjj
+├── 3. src/ (4 dossiers)
+│   ├── 1. config/ (1 fichier)
+│   │   └── 1. constants.js
+│   ├── 2. core/ (2 fichiers)
+│   │   ├── 1. FileListingController.js
+│   │   └── 2. TreeBuilderService.js
+│   ├── 3. services/ (3 fichiers)
+│   │   ├── 1. FileExplorerService.js
+│   │   ├── 2. NotificationService.js
+│   │   └── 3. ReportGeneratorService.js
+│   └── 4. utils/ (2 fichiers)
+│       ├── 1. formatters.js
+│       └── 2. pathUtils.js
+├── 4. testtttt/ (2 dossiers - 1 fichier)
+│   ├── 1. ouiiii/
+│   ├── 2. tstttttt/ (1 dossier - 1 fichier)
+│   │   ├── 1. ttttttttt/ (2 dossiers - 1 fichier)
+│   │   │   ├── 1. hah/
+│   │   │   ├── 2. test/ (12 fichiers)
+│   │   │   │   ├── 01. dd
+│   │   │   │   ├── 02. jjj
+│   │   │   │   ├── 03. jjjj
+│   │   │   │   ├── 04. jjjjjjjjj
+│   │   │   │   ├── 05. jjjjjjjjjj
+│   │   │   │   ├── 06. jo
+│   │   │   │   ├── 07. joj
+│   │   │   │   ├── 08. jojjo
+│   │   │   │   ├── 09. kj
+│   │   │   │   ├── 10. ll
+│   │   │   │   ├── 11. lll
+│   │   │   │   └── 12. o
+│   │   │   └── 1. no
+│   │   └── 1. mmmm
+│   └── 1. hzhz
+├── 1. CHANGELOG.md
+├── 2. LICENSE
+├── 3. README.md
+├── 4. jsconfig.json
+├── 5. listeur_de_fichiers_et_dossiers.js
+├── 6. package-lock.json
+└── 7. package.json
+
+================================================================================
+Fin de l'exploration récursive
+TOTAL: 53 éléments trouvés
+(Exclusions: node_modules/, dossiers cachés, fichiers système)
+================================================================================

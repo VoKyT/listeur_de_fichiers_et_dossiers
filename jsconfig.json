@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "target": "ES2022",
@@ -20,10 +21,8 @@
   "exclude": [
     "node_modules",
     "archives_anciennes_versions",
-    "**/*.min.js"
-  ],
-  "typeAcquisition": {
-    "enable": true,
-    "include": ["node"]
-  }
+    "**/*.min.js",
+    "lol",
+    "testtttt"
+  ]
 }

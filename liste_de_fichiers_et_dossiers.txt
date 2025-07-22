@@ -1,0 +1,41 @@
+================================================================================
+LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT
+================================================================================
+Dossier racine analysé: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers
+Date de génération: 22/07/2025 20:40:04
+STATISTIQUES: 13 dossiers, 8 fichiers
+Mode: Exploration récursive avec structure arborescente
+
+⚠️  EXCLUSIONS: node_modules/, dossiers cachés (.*), $RECYCLE.BIN
+   (Les dépendances npm ne sont pas comptabilisées)
+================================================================================
+
+STRUCTURE ARBORESCENTE:
+--------------------------------------------------
+├── 1. archives_anciennes_versions/
+├── 2. lol/
+├── 3. src/ (4 dossiers)
+│   ├── 1. config/
+│   ├── 2. core/
+│   ├── 3. services/
+│   └── 4. utils/
+├── 4. testtttt/ (2 dossiers)
+│   ├── 1. ouiiii/
+│   └── 2. tstttttt/ (1 dossier)
+│       └── 1. ttttttttt/ (2 dossiers)
+│           ├── 1. hah/
+│           └── 2. test/
+├── 1. .gitattributes
+├── 2. .gitignore
+├── 3. CHANGELOG.md
+├── 4. LICENSE
+├── 5. README.md
+├── 6. jsconfig.json
+├── 7. package-lock.json
+└── 8. package.json
+
+================================================================================
+Fin de l'exploration récursive
+TOTAL: 21 éléments trouvés
+(Exclusions: node_modules/, dossiers cachés, fichiers système)
+================================================================================

@@ -22,11 +22,10 @@ build/
 *.pkg
 
 # 📄 Fichiers de sortie générés par le script
-liste_de_fichiers_et_dossiers.txt
-liste_de_fichiers_et_dossiers*.txt
+# liste_de_fichiers_et_dossiers.txt
+# liste_de_fichiers_et_dossiers*.txt
 
 # 📁 Archives et anciens fichiers
-archives_anciennes_versions/
 backup/
 old/
 *.backup
