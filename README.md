@@ -75,11 +75,32 @@ Le script intègre un **chronomètre automatique** qui mesure :
 ```
 STRUCTURE ARBORESCENTE:
 --------------------------------------------------
+📁 mon_projet/ (3 dossiers - 5 fichiers)
 ├── 1. src/ (2 dossiers - 3 fichiers)
 │   ├── 1. components/ (1 fichier)
 │   │   └── 1. Button.js
 │   ├── 2. utils/ (2 fichiers)
 │   │   ├── 1. helpers.js
+│   │   └── 2. formatters.js
+│   ├── 1. index.js
+│   ├── 2. App.js
+│   └── 3. config.js
+├── 2. tests/ (1 fichier)
+│   └── 1. App.test.js
+├── 3. docs/ (1 fichier)
+│   └── 1. README.md
+├── 1. package.json
+├── 2. .gitignore
+├── 3. LICENSE
+├── 4. webpack.config.js
+└── 5. babel.config.js
+```
+
+**Caractéristiques du format :**
+- 📁 **Répertoire racine** avec compteur global
+- 🔢 **Numérotation locale** par niveau de dossier
+- 📊 **Compteurs intelligents** : (X dossiers - Y fichiers)
+- 🌳 **Indentation Unix** avec `├──` et `└──`
 │   │   └── 2. constants.js
 │   ├── 01. index.js
 │   ├── 02. app.js

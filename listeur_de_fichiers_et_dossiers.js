@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // listeur_de_fichiers_et_dossiers.js
-// Script Node.js pour lister fichiers et dossiers du répertoire courant - Version YAO-PKG v3.1.0
-// Popups PowerShell natifs avec System.Windows.Forms.MessageBox
+// Script Node.js pour lister fichiers et dossiers du répertoire courant - Version YAO-PKG v3.1.1
+// Popups PowerShell natifs + Compteur répertoire racine
 
 const fs = require('fs');
 const path = require('path');
@@ -380,7 +380,7 @@ Pour créer l'exécutable YAO-PKG :
 npm run build
 .\listeur_de_fichiers_et_dossiers.exe
 
-🎯 Fonctionnalités VERSION 3.1.0 :
+🎯 Fonctionnalités VERSION 3.1.1 :
 - Exploration COMPLÈTE de tous les sous-dossiers
 - Popups PowerShell natifs avec System.Windows.Forms.MessageBox
 - execSync() puis spawn() en fallback pour popups fiables
@@ -393,4 +393,5 @@ npm run build
 - Numérotation locale par dossier avec formatage adaptatif
 - Compteurs intelligents (dossiers/fichiers séparés)
 - ⏱️ CHRONOMÈTRE INTÉGRÉ : Mesure temps d'exploration et génération de fichier
+- 📁 COMPTEUR RÉPERTOIRE RACINE : Affichage statistiques du dossier principal
 */

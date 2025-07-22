@@ -12,6 +12,16 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.1] - 2025-07-22
+
+### ✨ Ajouté
+- **Compteur répertoire racine** : Affichage du nombre de dossiers/fichiers directs dans le répertoire principal
+- **En-tête arborescence** : `📁 nom_dossier/ (X dossiers - Y fichiers)` pour la racine
+
+### 🔄 Modifié
+- **Format de sortie** : Le répertoire racine affiche maintenant ses statistiques comme les sous-dossiers
+- **Cohérence visuelle** : Tous les dossiers ont maintenant leur compteur d'éléments
+
 ## [3.1.0] - 2025-07-22
 
 ### ✨ Ajouté
