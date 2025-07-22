@@ -311,6 +311,20 @@ const now = new Date().toLocaleString('fr-FR');
 // Construction de l'arborescence hiérarchique
 const hierarchicalLines = buildHierarchicalOutput(directory, dirs, files);
 
+// Calcul des éléments directs de la racine pour l'en-tête
+const rootFiles = files.filter(file => !file.includes('/') && !file.includes('\\')).length;
+const rootDirs = dirs.filter(dir => !dir.includes('/') && !dir.includes('\\')).length;
+
+// Construction du message de compteur pour la racine
+let rootCounterMessage = '';
+if (rootDirs > 0 && rootFiles > 0) {
+  rootCounterMessage = ` (${rootDirs} dossier${rootDirs > 1 ? 's' : ''} - ${rootFiles} fichier${rootFiles > 1 ? 's' : ''})`;
+} else if (rootDirs > 0) {
+  rootCounterMessage = ` (${rootDirs} dossier${rootDirs > 1 ? 's' : ''})`;
+} else if (rootFiles > 0) {
+  rootCounterMessage = ` (${rootFiles} fichier${rootFiles > 1 ? 's' : ''})`;
+}
+
 // En-tête du fichier
 const outputLines = [];
 outputLines.push('='.repeat(80));
@@ -328,6 +342,7 @@ outputLines.push('='.repeat(80));
 outputLines.push('');
 outputLines.push('STRUCTURE ARBORESCENTE:');
 outputLines.push('-'.repeat(50));
+outputLines.push(`📁 ${path.basename(directory)}/${rootCounterMessage}`);
 
 // Ajoute l'arborescence
 outputLines.push(...hierarchicalLines);

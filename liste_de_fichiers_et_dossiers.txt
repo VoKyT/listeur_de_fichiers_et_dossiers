@@ -2,9 +2,9 @@
 LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT
 ================================================================================
 Dossier racine analysé: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers
-Date de génération: 2025-07-22 22:09:18
-STATISTIQUES: 7 dossiers, 26 fichiers
-TEMPS D'EXPLORATION: 1.40s
+Date de génération: 22/07/2025 22:20:29
+STATISTIQUES: 7 dossiers, 27 fichiers
+TEMPS D'EXPLORATION: 1.65s
 Mode: Exploration récursive avec structure arborescente
 
 ⚠️  EXCLUSIONS: node_modules/, dossiers cachés (.*), $RECYCLE.BIN
@@ -13,6 +13,7 @@ Mode: Exploration récursive avec structure arborescente
 
 STRUCTURE ARBORESCENTE:
 --------------------------------------------------
+📁 listeur_de_fichiers_et_dossiers/ (2 dossiers - 8 fichiers)
 ├── 1. archives_anciennes_versions/ (6 fichiers)
 │   ├── 1. liste_de_fichiers_et_dossiers copy.txt
 │   ├── 2. liste_dossiers.bat
@@ -20,24 +21,25 @@ STRUCTURE ARBORESCENTE:
 │   ├── 4. listeur_de_fichiers.bat
 │   ├── 5. listeur_de_fichiers.js
 │   └── 6. listeur_de_fichiers.py
-├── 2. dossier_test_a_ne_pas_supprimer/ (2 dossiers)
+├── 2. dossier_test_a_ne_pas_supprimer/ (2 dossiers - 1 fichier)
 │   ├── 1. ouiiii/
-│   └── 2. tstttttt/ (1 dossier)
-│       └── 1. ttttttttt/ (2 dossiers)
-│           ├── 1. hah/
-│           └── 2. test/ (12 fichiers)
-│               ├── 01. dgfcv
-│               ├── 02. ertfyg
-│               ├── 03. esdgfh
-│               ├── 04. i
-│               ├── 05. iii
-│               ├── 06. p
-│               ├── 07. tfghb
-│               ├── 08. tfhg
-│               ├── 09. tfhgjkl
-│               ├── 10. tfhjn
-│               ├── 11. uhkj
-│               └── 12. ygjh
+│   ├── 2. tstttttt/ (1 dossier)
+│   │   └── 1. ttttttttt/ (2 dossiers)
+│   │       ├── 1. hah/
+│   │       └── 2. test/ (12 fichiers)
+│   │           ├── 01. dgfcv
+│   │           ├── 02. ertfyg
+│   │           ├── 03. esdgfh
+│   │           ├── 04. i
+│   │           ├── 05. iii
+│   │           ├── 06. p
+│   │           ├── 07. tfghb
+│   │           ├── 08. tfhg
+│   │           ├── 09. tfhgjkl
+│   │           ├── 10. tfhjn
+│   │           ├── 11. uhkj
+│   │           └── 12. ygjh
+│   └── 1. ffff
 ├── 1. .gitattributes
 ├── 2. .gitignore
 ├── 3. CHANGELOG.md
@@ -49,7 +51,7 @@ STRUCTURE ARBORESCENTE:
 
 ================================================================================
 Fin de l'exploration récursive
-TOTAL: 33 éléments trouvés
-TEMPS D'EXPLORATION: 1.40s
+TOTAL: 34 éléments trouvés
+TEMPS D'EXPLORATION: 1.65s
 (Exclusions: node_modules/, dossiers cachés, fichiers système)
 ================================================================================
