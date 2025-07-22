@@ -1,0 +1,47 @@
+# ================================================================================
+# .gitattributes pour listeur_de_fichiers_et_dossiers
+# ================================================================================
+
+# 📝 Normalisation des fins de ligne
+* text=auto eol=lf
+
+# 🔧 Fichiers JavaScript
+*.js text eol=lf
+*.json text eol=lf
+
+# 📄 Fichiers de configuration
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# 🏗️ Fichiers de build
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# 📦 Fichiers binaires
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# 🖼️ Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+
+# 📊 Données
+*.csv text eol=lf
+*.tsv text eol=lf
+*.sql text eol=lf
+
+# 🔒 Exclusions linguistiques GitHub (pour ne pas détecter comme un autre langage)
+lol/* linguist-vendored
+testtttt/* linguist-vendored
+archives_anciennes_versions/* linguist-vendored
+node_modules/* linguist-vendored
