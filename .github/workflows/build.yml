@@ -1,0 +1,114 @@
+name: 🚀 Build & Release
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: 🏗️ Build Executable
+    runs-on: windows-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+      
+    - name: 📦 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+        
+    - name: 📋 Install dependencies
+      run: npm ci
+      
+    - name: 🔍 Run linter (if configured)
+      run: npm run lint --if-present
+      continue-on-error: true
+      
+    - name: 🧪 Run tests (if configured)
+      run: npm test --if-present
+      continue-on-error: true
+      
+    - name: 🏗️ Build executable
+      run: npm run build
+      
+    - name: ✅ Test executable
+      run: |
+        if (Test-Path "listeur_de_fichiers_et_dossiers.exe") {
+          Write-Host "✅ Executable created successfully"
+          Get-Item "listeur_de_fichiers_et_dossiers.exe" | Select-Object Name, Length, LastWriteTime
+        } else {
+          Write-Host "❌ Executable not found"
+          exit 1
+        }
+      
+    - name: 📤 Upload executable artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: listeur-executable-windows
+        path: listeur_de_fichiers_et_dossiers.exe
+        retention-days: 30
+
+  release:
+    name: 🎉 Create Release
+    runs-on: windows-latest
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+      
+    - name: 📦 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+        
+    - name: 📋 Install dependencies
+      run: npm ci
+      
+    - name: 🏗️ Build executable
+      run: npm run build
+      
+    - name: 🎉 Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: |
+          ## 🚀 Nouvelle version du Listeur de Fichiers et Dossiers
+          
+          ### 📁 Fichiers inclus
+          - `listeur_de_fichiers_et_dossiers.exe` - Exécutable Windows autonome
+          
+          ### 💻 Utilisation
+          1. Téléchargez l'exécutable
+          2. Placez-le dans le dossier à analyser
+          3. Double-cliquez pour lancer l'exploration
+          
+          ### ✨ Fonctionnalités
+          - Exploration récursive complète
+          - Format arborescent avec compteurs
+          - Popup de notification Windows
+          - Exclusions automatiques intelligentes
+          
+          Voir le [CHANGELOG.md](CHANGELOG.md) pour les détails complets.
+        draft: false
+        prerelease: false
+        
+    - name: 📤 Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./listeur_de_fichiers_et_dossiers.exe
+        asset_name: listeur_de_fichiers_et_dossiers.exe
+        asset_content_type: application/octet-stream
