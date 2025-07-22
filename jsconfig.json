@@ -22,7 +22,7 @@
     "node_modules",
     "archives_anciennes_versions",
     "**/*.min.js",
-    "lol",
-    "testtttt"
+    "**/*.exe",
+    "liste_*.txt"
   ]
 }

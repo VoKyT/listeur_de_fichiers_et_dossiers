@@ -1,7 +1,7 @@
 {
   "name": "listeur_de_fichiers_et_dossiers",
-  "version": "3.0.0",
-  "description": "Listeur récursif de fichiers et dossiers avec format arborescent - Build avec yao-pkg",
+  "version": "3.1.0",
+  "description": "Listeur récursif de fichiers et dossiers avec format arborescent et popups PowerShell - Build avec yao-pkg",
   "main": "listeur_de_fichiers_et_dossiers.js",
   "type": "commonjs",
   "engines": {
@@ -9,15 +9,18 @@
   },
   "scripts": {
     "start": "node listeur_de_fichiers_et_dossiers.js",
-    "build": "pkg listeur_de_fichiers_et_dossiers.js --targets win --output listeur_de_fichiers_et_dossiers.exe"
+    "build": "npx @yao-pkg/pkg listeur_de_fichiers_et_dossiers.js --targets win --output listeur_de_fichiers_et_dossiers.exe"
   },
   "keywords": [
     "file",
-    "directory",
+    "directory", 
     "recursive",
     "tree",
     "executable",
-    "nodejs"
+    "nodejs",
+    "popup",
+    "powershell",
+    "windows"
   ],
   "author": "",
   "license": "ISC",

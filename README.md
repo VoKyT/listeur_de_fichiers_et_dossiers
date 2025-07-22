@@ -1,7 +1,7 @@
 # 📁 Listeur de Fichiers et Dossiers
 
 ## 🎯 Description
-Script Node.js pour explorer récursivement tous les fichiers et dossiers d'un répertoire et générer une liste structurée au format arborescent avec compteurs intelligents.
+Script Node.js pour explorer récursivement tous les fichiers et dossiers d'un répertoire et générer une liste structurée au format arborescent avec compteurs intelligents et popups PowerShell.
 
 ## ✨ Fonctionnalités
 - ✅ **Exploration récursive** complète de tous les sous-dossiers
@@ -9,8 +9,9 @@ Script Node.js pour explorer récursivement tous les fichiers et dossiers d'un r
 - ✅ **Compteurs intelligents** : dossiers et fichiers séparés par niveau
 - ✅ **Numérotation adaptative** avec zéros de remplissage automatique
 - ✅ **Exclusions automatiques** : `node_modules/`, dossiers cachés, fichiers système
-- ✅ **Notifications Windows** avec popups non-bloquantes
+- ✅ **Popups PowerShell natifs** avec fallback console
 - ✅ **Compatible yao-pkg** pour création d'exécutable autonome
+- ✅ **Gestion d'erreurs robuste** avec logs détaillés
 
 ## 🚀 Installation
 
@@ -38,6 +39,16 @@ npm run build
 ```
 
 L'exécutable `listeur_de_fichiers_et_dossiers.exe` sera créé et pourra être utilisé sans Node.js.
+
+## 🔔 Popups et Notifications
+
+Le script affiche **2 popups PowerShell** :
+1. **Popup de début** : Information sur le fonctionnement récursif
+2. **Popup de fin** : Résultats avec statistiques complètes
+
+**Méthode utilisée :** `System.Windows.Forms.MessageBox` via PowerShell pour une compatibilité maximale.
+
+**Fallback :** Si PowerShell échoue, les messages s'affichent dans la console.
 
 ## 📊 Exemple de sortie
 ```

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // listeur_de_fichiers_et_dossiers.js
-// Script Node.js pour lister fichiers et dossiers du répertoire courant - Version YAO-PKG
+// Script Node.js pour lister fichiers et dossiers du répertoire courant - Version YAO-PKG v3.1.0
+// Popups PowerShell natifs avec System.Windows.Forms.MessageBox
 
 const fs = require('fs');
 const path = require('path');
@@ -331,13 +332,16 @@ Pour créer l'exécutable YAO-PKG :
 npm run build
 .\listeur_de_fichiers_et_dossiers.exe
 
-🎯 Fonctionnalités VERSION RÉCURSIVE :
+🎯 Fonctionnalités VERSION 3.1.0 :
 - Exploration COMPLÈTE de tous les sous-dossiers
-- spawn() au lieu d'execSync() pour popups non-bloquantes
-- process.pkg au lieu de process.env.NODE_SEA pour détection
-- Compatible avec tous les modules npm externes
-- Format de sortie hiérarchique avec indentation
+- Popups PowerShell natifs avec System.Windows.Forms.MessageBox
+- execSync() puis spawn() en fallback pour popups fiables
+- process.pkg pour détection d'environnement yao-pkg
+- Échappement robuste des caractères spéciaux dans popups
+- Format de sortie hiérarchique avec indentation Unix
 - Exclusion automatique des dossiers système (.git, node_modules, etc.)
 - Gestion d'erreurs pour les fichiers inaccessibles
-- Statistiques complètes d'exploration
+- Logs détaillés pour debugging des popups
+- Numérotation locale par dossier avec formatage adaptatif
+- Compteurs intelligents (dossiers/fichiers séparés)
 */

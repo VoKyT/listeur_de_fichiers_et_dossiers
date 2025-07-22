@@ -5,6 +5,32 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+# 📝 Changelog
+
+Toutes les modifications notables de ce projet seront documentées dans ce fichier.
+
+Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
+et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [3.1.0] - 2025-07-22
+
+### ✨ Ajouté
+- **Popups PowerShell fiables** : Remplacement de `msg.exe` par `System.Windows.Forms.MessageBox`
+- **Gestion d'erreurs avancée** : Logs détaillés pour le debugging des popups
+- **Nettoyage automatique** : Suppression des dossiers et fichiers obsolètes
+- **Échappement robuste** : Caractères spéciaux et sauts de ligne dans les popups
+
+### 🔧 Corrigé
+- **Popups manquants** : Les deux popups s'affichent maintenant correctement
+- **Caractères spéciaux** : Gestion des émojis et accents dans les messages
+- **Timeout PowerShell** : Limitation à 10s pour éviter les blocages
+- **Fallback intelligent** : `execSync` puis `spawn` en cas d'échec
+
+### 🔄 Modifié
+- **Méthode popup** : Migration de `msg.exe` vers PowerShell natif
+- **Messages debug** : Ajout de logs pour tracer l'exécution des popups
+- **Structure projet** : Nettoyage des dossiers de test et fichiers obsolètes
+
 ## [3.0.0] - 2025-07-22
 
 ### ✨ Ajouté
