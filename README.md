@@ -12,6 +12,7 @@ Script Node.js pour explorer récursivement tous les fichiers et dossiers d'un r
 - ✅ **Popups PowerShell natifs** avec fallback console
 - ✅ **Compatible yao-pkg** pour création d'exécutable autonome
 - ✅ **Gestion d'erreurs robuste** avec logs détaillés
+- ⏱️ **Chronomètre intégré** : Mesure temps d'exploration et génération
 
 ## 🚀 Installation
 
@@ -49,6 +50,26 @@ Le script affiche **2 popups PowerShell** :
 **Méthode utilisée :** `System.Windows.Forms.MessageBox` via PowerShell pour une compatibilité maximale.
 
 **Fallback :** Si PowerShell échoue, les messages s'affichent dans la console.
+
+## ⏱️ Performances et Chronomètre
+
+Le script intègre un **chronomètre automatique** qui mesure :
+
+- **Temps d'exploration** : Durée de parcours récursif des dossiers
+- **Temps de génération** : Durée d'écriture du fichier de sortie  
+- **Temps total** : Durée complète d'exécution
+
+**Affichage des mesures :**
+- 📊 **Console** : Logs en temps réel avec formatage intelligent (ms/s/min)
+- 📄 **Fichier de sortie** : En-tête et pied de page avec temps d'exploration
+- 🔔 **Popup final** : Temps total dans le message de confirmation
+
+**Exemple de performance typique :**
+```
+⏱️ Temps d'exploration: 1.43s
+💾 Fichier généré en 23ms  
+⏱️ TEMPS TOTAL: 1.46s
+```
 
 ## 📊 Exemple de sortie
 ```

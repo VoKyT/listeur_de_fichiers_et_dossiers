@@ -2,8 +2,9 @@
 LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT
 ================================================================================
 Dossier racine analysé: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers
-Date de génération: 2025-07-22 21:54:39
+Date de génération: 2025-07-22 22:09:18
 STATISTIQUES: 7 dossiers, 26 fichiers
+TEMPS D'EXPLORATION: 1.40s
 Mode: Exploration récursive avec structure arborescente
 
 ⚠️  EXCLUSIONS: node_modules/, dossiers cachés (.*), $RECYCLE.BIN
@@ -49,5 +50,6 @@ STRUCTURE ARBORESCENTE:
 ================================================================================
 Fin de l'exploration récursive
 TOTAL: 33 éléments trouvés
+TEMPS D'EXPLORATION: 1.40s
 (Exclusions: node_modules/, dossiers cachés, fichiers système)
 ================================================================================

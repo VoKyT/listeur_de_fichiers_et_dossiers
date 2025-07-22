@@ -7,6 +7,20 @@ const fs = require('fs');
 const path = require('path');
 const { spawn, execSync } = require('child_process');
 
+// Fonction pour formater le temps d'exécution
+function formatDuration(milliseconds) {
+  if (milliseconds < 1000) {
+    return `${milliseconds}ms`;
+  } else if (milliseconds < 60000) {
+    const seconds = (milliseconds / 1000).toFixed(2);
+    return `${seconds}s`;
+  } else {
+    const minutes = Math.floor(milliseconds / 60000);
+    const seconds = ((milliseconds % 60000) / 1000).toFixed(1);
+    return `${minutes}min ${seconds}s`;
+  }
+}
+
 // Fonction pour afficher une pop-up Windows (version non-bloquante pour yao-pkg)
 function showPopup(title, message) {
   try {
@@ -65,6 +79,10 @@ const directory = process.pkg ? process.cwd() : __dirname;
 // Fichier de sortie
 const outputFile = path.join(directory, 'liste_de_fichiers_et_dossiers.txt');
 const outputFileName = path.basename(outputFile);
+
+// 🕐 Début du chronomètre
+const startTime = Date.now();
+console.log('⏱️ Démarrage du chronomètre...');
 
 // Pop-up d'information au début
 showPopup(
@@ -280,7 +298,12 @@ const explorationResults = exploreDirectory(directory);
 const dirs = explorationResults.dirs;
 const files = explorationResults.files;
 
+// 🕐 Calcul du temps d'exploration
+const explorationEndTime = Date.now();
+const explorationDuration = explorationEndTime - startTime;
+
 console.log(`📊 Résultats: ${dirs.length} dossiers, ${files.length} fichiers trouvés`);
+console.log(`⏱️ Temps d'exploration: ${formatDuration(explorationDuration)}`);
 
 // Formate la date actuelle en français (jj/mm/aaaa hh:mm:ss)
 const now = new Date().toLocaleString('fr-FR');
@@ -296,6 +319,7 @@ outputLines.push('='.repeat(80));
 outputLines.push(`Dossier racine analysé: ${directory}`);
 outputLines.push(`Date de génération: ${now}`);
 outputLines.push(`STATISTIQUES: ${dirs.length} dossiers, ${files.length} fichiers`);
+outputLines.push(`TEMPS D'EXPLORATION: ${formatDuration(explorationDuration)}`);
 outputLines.push('Mode: Exploration récursive avec structure arborescente');
 outputLines.push('');
 outputLines.push('⚠️  EXCLUSIONS: node_modules/, dossiers cachés (.*), $RECYCLE.BIN');
@@ -312,18 +336,27 @@ outputLines.push('');
 outputLines.push('='.repeat(80));
 outputLines.push('Fin de l\'exploration récursive');
 outputLines.push(`TOTAL: ${dirs.length + files.length} éléments trouvés`);
+outputLines.push(`TEMPS D'EXPLORATION: ${formatDuration(explorationDuration)}`);
 outputLines.push('(Exclusions: node_modules/, dossiers cachés, fichiers système)');
 outputLines.push('='.repeat(80));
 
 // Écrit chaque élément un par ligne dans le fichier de sortie
 fs.writeFileSync(outputFile, outputLines.join('\n'), 'utf-8');
+
+// 🕐 Calcul du temps total
+const totalEndTime = Date.now();
+const totalDuration = totalEndTime - startTime;
+const fileGenerationDuration = totalDuration - explorationDuration;
+
+console.log(`💾 Fichier généré en ${formatDuration(fileGenerationDuration)}`);
+console.log(`⏱️ TEMPS TOTAL: ${formatDuration(totalDuration)}`);
 console.log(`Liste RÉCURSIVE des fichiers et dossiers enregistrée dans "${outputFile}"`);
 
 // Pop-up de confirmation à la fin 
-const nodeModulesMessage = hasNodeModules ? '\n\n📦 Note: Le dossier "node_modules/" (dépendances npm) a été exclu de l\'analyse pour éviter des milliers d\'éléments supplémentaires.' : '';
+const nodeModulesMessage = hasNodeModules ? ' | 📦 Note: Le dossier "node_modules/" (dépendances npm) a été exclu de l\'analyse pour éviter des milliers d\'éléments supplémentaires.' : '';
 showPopup(
   'Exploration récursive terminée !',
-  `✅ ${dirs.length + files.length} éléments trouvés dans tous les sous-dossiers !\n\n📁 ${dirs.length} dossiers\n📄 ${files.length} fichiers${nodeModulesMessage} \n💾 Liste sauvegardée dans "${outputFileName}"`
+  `✅ ${dirs.length + files.length} éléments trouvés dans tous les sous-dossiers ! | 📁 ${dirs.length} dossiers | 📄 ${files.length} fichiers | ⏱️ Temps total: ${formatDuration(totalDuration)}${nodeModulesMessage} | 💾 Liste sauvegardée dans "${outputFileName}"`
 );
 
 
@@ -344,4 +377,5 @@ npm run build
 - Logs détaillés pour debugging des popups
 - Numérotation locale par dossier avec formatage adaptatif
 - Compteurs intelligents (dossiers/fichiers séparés)
+- ⏱️ CHRONOMÈTRE INTÉGRÉ : Mesure temps d'exploration et génération de fichier
 */
