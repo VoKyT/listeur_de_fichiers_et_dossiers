@@ -2,7 +2,7 @@
 ==================================================
 LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT
 ==================================================
-Date de génération: 23/07/2025 14:50:51
+Date de génération: 23/07/2025 15:55:05
 Version: 2.0.0
 
 
@@ -10,8 +10,8 @@ Version: 2.0.0
             Configuration de l'analyse            
 ==================================================
 DOSSIER RACINE ANALYSÉ: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers
-DATE DE GÉNÉRATION: 23/07/2025 14:50:51
-STATISTIQUES: 76 éléments (18 dossiers, 58 fichiers)
+DATE DE GÉNÉRATION: 23/07/2025 15:55:05
+STATISTIQUES: 80 éléments (21 dossiers, 59 fichiers)
 TEMPS D'EXPLORATION: 5ms
 MODE: Exploration récursive avec structure arborescente
 
@@ -26,24 +26,28 @@ MODE: Exploration récursive avec structure arborescente
               STRUCTURE ARBORESCENTE              
 ==================================================
 📁 listeur_de_fichiers_et_dossiers/ (5 dossiers - 8 fichiers)
-├── 1. archives_anciennes_versions/ (10 fichiers)
-│   ├── 01. liste_de_fichiers_et_dossiers copy.txt
-│   ├── 02. liste_dossiers.bat
-│   ├── 03. listeur_backup.js
-│   ├── 04. listeur_de_fichiers.bat
-│   ├── 05. listeur_de_fichiers.js
-│   ├── 06. listeur_de_fichiers.py
-│   ├── 07. listeur_de_fichiers_et_dossiers_legacy.exe
-│   ├── 08. listeur_de_fichiers_et_dossiers_legacy.js
-│   ├── 09. listeur_de_fichiers_et_dossiers_simple.exe
-│   └── 10. listeur_de_fichiers_et_dossiers_simple_no_modular.js
-├── 2. docs/ (6 fichiers)
-│   ├── 1. README.md
-│   ├── 2. analyse_simple_vs_complexe.md
-│   ├── 3. correction_version_complexe.md
-│   ├── 4. plan_nettoyage.md
-│   ├── 5. rapport_tests_lanceurs.md
-│   └── 6. reorganisation_finale.md
+├── 1. archives_anciennes_versions/ (8 fichiers)
+│   ├── 1. liste_de_fichiers_et_dossiers copy.txt
+│   ├── 2. liste_dossiers.bat
+│   ├── 3. listeur_backup.js
+│   ├── 4. listeur_de_fichiers.bat
+│   ├── 5. listeur_de_fichiers.js
+│   ├── 6. listeur_de_fichiers.py
+│   ├── 7. listeur_de_fichiers_et_dossiers_legacy.js
+│   └── 8. listeur_de_fichiers_et_dossiers_simple_no_modular.js
+├── 2. docs/ (3 dossiers - 1 fichier)
+│   ├── 1. analyses/ (2 fichiers)
+│   │   ├── 1. comparaison-architectures.md
+│   │   └── 2. tests-performances.md
+│   ├── 2. essentiels/ (2 fichiers)
+│   │   ├── 1. 01-architecture.md
+│   │   └── 2. 02-utilisation.md
+│   ├── 3. historique/ (4 fichiers)
+│   │   ├── 1. correction-bugs-v2.md
+│   │   ├── 2. evolution-architecture.md
+│   │   ├── 3. plan-nettoyage-projet.md
+│   │   └── 4. readme-complet-ancien.md
+│   └── 1. README.md
 ├── 3. dossier_test_a_ne_pas_supprimer/ (2 dossiers - 1 fichier)
 │   ├── 1. ouiiii/
 │   ├── 2. tstttttt/ (1 dossier)
@@ -107,8 +111,8 @@ MODE: Exploration récursive avec structure arborescente
 ==================================================
         RÉSUMÉ DE L'EXPLORATION RÉCURSIVE         
 ==================================================
-TOTAL GÉNÉRAL: 76 éléments trouvés
-DÉTAIL: 18 dossiers, 58 fichiers
+TOTAL GÉNÉRAL: 80 éléments trouvés
+DÉTAIL: 21 dossiers, 59 fichiers
 TEMPS D'EXPLORATION: 5ms
 
 ⚠️  EXCLUSIONS APPLIQUÉES:
