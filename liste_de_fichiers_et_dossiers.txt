@@ -1,29 +1,50 @@
-================================================================================
+
+==================================================
 LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT
-================================================================================
+==================================================
+Date de génération: 23/07/2025 14:50:51
+Version: 2.0.0
+
+
+==================================================
+            Configuration de l'analyse            
+==================================================
 DOSSIER RACINE ANALYSÉ: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers
-DATE DE GÉNÉRATION: 22/07/2025 23:13:07
-STATISTIQUES: 7 dossiers, 27 fichiers
-TEMPS D'EXPLORATION: 2.03s
+DATE DE GÉNÉRATION: 23/07/2025 14:50:51
+STATISTIQUES: 76 éléments (18 dossiers, 58 fichiers)
+TEMPS D'EXPLORATION: 5ms
 MODE: Exploration récursive avec structure arborescente
 
 ⚠️  EXCLUSIONS APPLIQUÉES:
    • node_modules/ (dépendances npm)
    • Dossiers cachés (.*)
    • Fichiers système ($RECYCLE.BIN)
-================================================================================
 
-STRUCTURE ARBORESCENTE:
-================================================================================
-📁 listeur_de_fichiers_et_dossiers/ (2 dossiers - 8 fichiers)
-├── 1. archives_anciennes_versions/ (6 fichiers)
-│   ├── 1. liste_de_fichiers_et_dossiers copy.txt
-│   ├── 2. liste_dossiers.bat
-│   ├── 3. listeur_backup.js
-│   ├── 4. listeur_de_fichiers.bat
-│   ├── 5. listeur_de_fichiers.js
-│   └── 6. listeur_de_fichiers.py
-├── 2. dossier_test_a_ne_pas_supprimer/ (2 dossiers - 1 fichier)
+
+
+==================================================
+              STRUCTURE ARBORESCENTE              
+==================================================
+📁 listeur_de_fichiers_et_dossiers/ (5 dossiers - 8 fichiers)
+├── 1. archives_anciennes_versions/ (10 fichiers)
+│   ├── 01. liste_de_fichiers_et_dossiers copy.txt
+│   ├── 02. liste_dossiers.bat
+│   ├── 03. listeur_backup.js
+│   ├── 04. listeur_de_fichiers.bat
+│   ├── 05. listeur_de_fichiers.js
+│   ├── 06. listeur_de_fichiers.py
+│   ├── 07. listeur_de_fichiers_et_dossiers_legacy.exe
+│   ├── 08. listeur_de_fichiers_et_dossiers_legacy.js
+│   ├── 09. listeur_de_fichiers_et_dossiers_simple.exe
+│   └── 10. listeur_de_fichiers_et_dossiers_simple_no_modular.js
+├── 2. docs/ (6 fichiers)
+│   ├── 1. README.md
+│   ├── 2. analyse_simple_vs_complexe.md
+│   ├── 3. correction_version_complexe.md
+│   ├── 4. plan_nettoyage.md
+│   ├── 5. rapport_tests_lanceurs.md
+│   └── 6. reorganisation_finale.md
+├── 3. dossier_test_a_ne_pas_supprimer/ (2 dossiers - 1 fichier)
 │   ├── 1. ouiiii/
 │   ├── 2. tstttttt/ (1 dossier)
 │   │   └── 1. ttttttttt/ (2 dossiers)
@@ -42,6 +63,37 @@ STRUCTURE ARBORESCENTE:
 │   │           ├── 11. uhkj
 │   │           └── 12. ygjh
 │   └── 1. ffff
+├── 4. src/ (4 dossiers)
+│   ├── 1. config/ (2 fichiers)
+│   │   ├── 1. config-manager.js
+│   │   └── 2. default-config.js
+│   ├── 2. core/ (4 dossiers - 1 fichier)
+│   │   ├── 1. exploration/ (3 fichiers)
+│   │   │   ├── 1. directory-explorer.js
+│   │   │   ├── 2. exclusion-filter.js
+│   │   │   └── 3. path-resolver.js
+│   │   ├── 2. formatting/ (3 fichiers)
+│   │   │   ├── 1. counter-calculator.js
+│   │   │   ├── 2. numbering-formatter.js
+│   │   │   └── 3. tree-builder.js
+│   │   ├── 3. output/ (4 fichiers)
+│   │   │   ├── 1. file-writer.js
+│   │   │   ├── 2. report-generator.js
+│   │   │   ├── 3. report-section-builder.js
+│   │   │   └── 4. text-formatter.js
+│   │   ├── 4. statistics/ (3 fichiers)
+│   │   │   ├── 1. element-counter.js
+│   │   │   ├── 2. performance-tracker.js
+│   │   │   └── 3. progress-tracker.js
+│   │   └── 1. workflow-orchestrator.js
+│   ├── 3. infrastructure/ (2 fichiers)
+│   │   ├── 1. filesystem-manager.js
+│   │   └── 2. notification-service.js
+│   └── 4. utils/ (2 fichiers)
+│       ├── 1. error-handler.js
+│       └── 2. validation-utils.js
+├── 5. test/ (1 fichier)
+│   └── 1. test-modules.js
 ├── 1. .gitattributes
 ├── 2. .gitignore
 ├── 3. CHANGELOG.md
@@ -51,15 +103,16 @@ STRUCTURE ARBORESCENTE:
 ├── 7. package-lock.json
 └── 8. package.json
 
-================================================================================
-RÉSUMÉ DE L'EXPLORATION RÉCURSIVE
-================================================================================
-TOTAL GÉNÉRAL: 34 éléments trouvés
-DÉTAIL: 7 dossiers, 27 fichiers
-TEMPS D'EXPLORATION: 2.03s
+
+==================================================
+        RÉSUMÉ DE L'EXPLORATION RÉCURSIVE         
+==================================================
+TOTAL GÉNÉRAL: 76 éléments trouvés
+DÉTAIL: 18 dossiers, 58 fichiers
+TEMPS D'EXPLORATION: 5ms
 
 ⚠️  EXCLUSIONS APPLIQUÉES:
    • node_modules/ (dépendances npm)
    • Dossiers cachés (.*)
    • Fichiers système ($RECYCLE.BIN)
-================================================================================
+
