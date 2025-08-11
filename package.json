@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node listeur_de_fichiers_et_dossiers.js",
+    "start:window": "electron interface-main.js",
     "start:legacy": "node archives_anciennes_versions/listeur_de_fichiers_et_dossiers_legacy.js",
     "start:simple": "node archives_anciennes_versions/listeur_de_fichiers_et_dossiers_simple_no_modular.js",
     "build": "npx @yao-pkg/pkg listeur_de_fichiers_et_dossiers.js --targets win --output listeur_de_fichiers_et_dossiers.exe",
@@ -18,7 +19,7 @@
   },
   "keywords": [
     "file",
-    "directory", 
+    "directory",
     "recursive",
     "tree",
     "executable",
@@ -31,6 +32,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^24.1.0",
-    "@yao-pkg/pkg": "^6.6.0"
+    "@yao-pkg/pkg": "^6.6.0",
+    "electron": "^37.2.6"
   }
 }

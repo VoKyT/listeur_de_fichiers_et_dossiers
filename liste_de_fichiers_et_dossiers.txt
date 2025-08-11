@@ -2,7 +2,7 @@
 ==================================================
 LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT
 ==================================================
-Date de génération: 23/07/2025 15:55:05
+Date de génération: 10/08/2025 22:16:43
 Version: 2.0.0
 
 
@@ -10,9 +10,9 @@ Version: 2.0.0
             Configuration de l'analyse            
 ==================================================
 DOSSIER RACINE ANALYSÉ: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers
-DATE DE GÉNÉRATION: 23/07/2025 15:55:05
+DATE DE GÉNÉRATION: 10/08/2025 22:16:43
 STATISTIQUES: 80 éléments (21 dossiers, 59 fichiers)
-TEMPS D'EXPLORATION: 5ms
+TEMPS D'EXPLORATION: 4ms
 MODE: Exploration récursive avec structure arborescente
 
 ⚠️  EXCLUSIONS APPLIQUÉES:
@@ -113,7 +113,7 @@ MODE: Exploration récursive avec structure arborescente
 ==================================================
 TOTAL GÉNÉRAL: 80 éléments trouvés
 DÉTAIL: 21 dossiers, 59 fichiers
-TEMPS D'EXPLORATION: 5ms
+TEMPS D'EXPLORATION: 4ms
 
 ⚠️  EXCLUSIONS APPLIQUÉES:
    • node_modules/ (dépendances npm)
