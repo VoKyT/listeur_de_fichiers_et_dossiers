@@ -58,7 +58,7 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
-
+//test
 // Recréer une fenêtre sur macOS
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
