@@ -22,6 +22,13 @@ npm start                    # Version modulaire principale
 node listeur_de_fichiers_et_dossiers.js  # Exécution directe
 ```
 
+### **UI (Electron) + Tailwind CSS v4**
+```bash
+npm run build-css            # Build CSS en watch (v4)
+npm run build-css:prod       # Build CSS minifié (v4)
+npm run start:window         # Lancer la fenêtre Electron
+```
+
 ### **Compilation en Exécutable**
 ```bash
 npm run build               # Créer l'exécutable Windows
