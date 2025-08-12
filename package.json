@@ -15,8 +15,8 @@
     "build": "npx @yao-pkg/pkg listeur_de_fichiers_et_dossiers.js --targets win --output listeur_de_fichiers_et_dossiers.exe",
     "build:legacy": "npx @yao-pkg/pkg archives_anciennes_versions/listeur_de_fichiers_et_dossiers_legacy.js --targets win --output archives_anciennes_versions/listeur_de_fichiers_et_dossiers_legacy.exe",
     "build:simple": "npx @yao-pkg/pkg archives_anciennes_versions/listeur_de_fichiers_et_dossiers_simple_no_modular.js --targets win --output archives_anciennes_versions/listeur_de_fichiers_et_dossiers_simple.exe",
-    "build-css": "npx tailwindcss -i ui/input.css -o ui/styles.css --watch",
-    "build-css:prod": "npx tailwindcss -i ui/input.css -o ui/styles.css --minify",
+    "build-css": "npx tailwindcss -i ui/tailwind.css -o ui/styles.css --watch",
+    "build-css:prod": "npx tailwindcss -i ui/tailwind.css -o ui/styles.css --minify",
     "test": "node test/test-modules.js"
   },
   "keywords": [
