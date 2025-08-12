@@ -3,6 +3,7 @@
  */
 
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 let mainWindow;
 
@@ -21,8 +22,8 @@ function createWindow() {
     }
   });
 
-  // Page HTML vide
-  mainWindow.loadURL('data:text/html;charset=utf-8,<h1>Fenetre Electron vide</h1>');
+  // Charge le fichier HTML
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
   
   // Supprime complètement la barre de menu
   mainWindow.setMenuBarVisibility(false);

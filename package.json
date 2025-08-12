@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node listeur_de_fichiers_et_dossiers.js",
-    "start:window": "electron interface-main.js",
+    "start:window": "electron ui/main.js",
     "start:legacy": "node archives_anciennes_versions/listeur_de_fichiers_et_dossiers_legacy.js",
     "start:simple": "node archives_anciennes_versions/listeur_de_fichiers_et_dossiers_simple_no_modular.js",
     "build": "npx @yao-pkg/pkg listeur_de_fichiers_et_dossiers.js --targets win --output listeur_de_fichiers_et_dossiers.exe",
