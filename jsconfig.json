@@ -20,7 +20,7 @@
   ],
   "exclude": [
     "node_modules",
-    "archives_anciennes_versions",
+    "archives_anciennes_versions_v1",
     "**/*.min.js",
     "**/*.exe",
     "liste_*.txt"
