@@ -15,8 +15,9 @@
     "build": "npx @yao-pkg/pkg listeur_de_fichiers_et_dossiers.js --targets win --output listeur_de_fichiers_et_dossiers.exe",
     "build:legacy": "npx @yao-pkg/pkg archives_anciennes_versions/listeur_de_fichiers_et_dossiers_legacy.js --targets win --output archives_anciennes_versions/listeur_de_fichiers_et_dossiers_legacy.exe",
     "build:simple": "npx @yao-pkg/pkg archives_anciennes_versions/listeur_de_fichiers_et_dossiers_simple_no_modular.js --targets win --output archives_anciennes_versions/listeur_de_fichiers_et_dossiers_simple.exe",
-    "build-css": "npx tailwindcss -i ui/tailwind.css -o ui/styles.css --watch",
-    "build-css:prod": "npx tailwindcss -i ui/tailwind.css -o ui/styles.css --minify",
+    "dev": "vite",
+    "build:react": "vite build",
+    "preview": "vite preview",
     "test": "node test/test-modules.js"
   },
   "keywords": [
@@ -33,10 +34,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^24.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
     "@yao-pkg/pkg": "^6.6.0",
+    "autoprefixer": "^10.4.21",
     "electron": "^37.2.6",
     "tailwindcss": "^4.0.0",
-    "@tailwindcss/cli": "^4.0.0"
+    "vite": "^7.1.2"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }
