@@ -1,11 +1,12 @@
-# 💻 Guide d'Utilisation Détaillé
+# 💻 Guide d'Utilisation Hybride - React + CLI
 
 ## 🚀 **Installation Complète**
 
 ### **Prérequis Système**
-- Node.js 22.0.0+ (LTS recommandé)
-- Windows (pour les notifications popup)
-- PowerShell (pour les notifications natives)
+- **Node.js 22.0.0+** (LTS recommandé)
+- **Windows 10/11** (pour les notifications popup + Electron)
+- **PowerShell** (pour les notifications natives)
+- **Navigateur moderne** (pour le développement React web)
 
 ### **Installation des dépendances**
 ```bash
@@ -13,38 +14,87 @@
 git clone https://github.com/VoKyT/listeur_de_fichiers_et_dossiers.git
 cd listeur_de_fichiers_et_dossiers
 
-# Installer les dépendances
+# Installer les dépendances (React + Backend)
 npm install
 
 # Vérifier l'installation
 npm test
 ```
 
-## 🔧 **Utilisation Avancée**
+---
 
-### **Scripts npm disponibles**
+## 🎯 **Utilisation - Dual Mode**
+
+### **� Interface React Moderne (Recommandé)**
+
+#### **Développement Web (Hot Reload)**
 ```bash
-# Exécution
-npm start                    # Version modulaire principale
+npm run dev                  # Interface web React sur http://localhost:3001+
+                            # HMR activé, DevTools disponibles
+```
+
+#### **Application Desktop**
+```bash
+npm run start:window        # Application Electron native
+                            # Auto-détection port Vite, gestion processus
+```
+
+#### **Build Production React**
+```bash
+npm run build:react         # Build optimisé pour déploiement web
+npm run preview             # Prévisualiser le build (optionnel)
+```
+
+---
+
+### **💻 Interface CLI Backend (Original)**
+
+#### **Scripts npm disponibles**
+```bash
+# Exécution CLI
+npm start                    # Version modulaire principale (20 modules)
 npm run start:legacy         # Version legacy (script original)
 npm run start:simple         # Version simple non-modulaire
 
-# Compilation
-npm run build               # Créer l'exécutable principal
+# Compilation standalone
+npm run build               # Créer l'exécutable principal (.exe)
 npm run build:legacy        # Créer l'exécutable legacy
 npm run build:simple        # Créer l'exécutable simple
 
-# Tests
+# Tests backend
 npm test                    # Exécuter tous les tests (35 tests)
 ```
 
-### **Exécution directe**
+#### **Exécution directe**
 ```bash
-# Sans npm
+# Sans npm (CLI backend)
 node listeur_de_fichiers_et_dossiers.js
 
 # Avec l'exécutable (après npm run build)
 ./listeur_de_fichiers_et_dossiers.exe
+```
+
+---
+
+## ⚡ **Développement React**
+
+### **Hot Module Replacement (HMR)**
+- **Changements instantanés** : Modification de `ui/src/App.jsx` → Reload automatique
+- **État préservé** : Les composants React conservent leur état local
+- **DevTools React** : Extension navigateur pour inspection des composants
+
+### **Structure de développement**
+```bash
+# Terminal 1 : Vite dev server
+npm run dev
+
+# Terminal 2 : Application Electron (optionnel)
+npm run start:window
+
+# Fichiers à modifier :
+# - ui/src/App.jsx        → Composant principal
+# - ui/src/tailwind.css   → Styles Tailwind
+# - vite.config.js        → Configuration build
 ```
 
 ## 📋 **Format de Sortie Détaillé**

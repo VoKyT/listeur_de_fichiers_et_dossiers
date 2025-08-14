@@ -1,6 +1,29 @@
-# 🏗️ Architecture Modulaire Détaillée
+# 🏗️ Architecture Hybride Détaillée - React + Node.js
 
-## 📁 Structure Complète des Modules (20 modules)
+## 🚀 **DOUBLE ARCHITECTURE : Frontend React + Backend Modulaire**
+
+### **📱 Frontend React (ui/src/) - Stack Moderne**
+```
+📁 ui/
+├── 📄 index.html              # Point d'entrée React minimal
+├── ⚡ main.js                # Processus principal Electron + Vite
+├── 🛠️ ../vite.config.js      # Configuration Vite + React plugin
+├── 🎨 ../postcss.config.js    # PostCSS + Tailwind + Autoprefixer
+└── 📁 src/
+    ├── 🚀 App.jsx            # Composant principal React
+    ├── 🎯 index.jsx          # Bootstrap React (createRoot)
+    └── 🎨 tailwind.css       # Imports Tailwind CSS (@import "tailwindcss")
+```
+
+**Stack Frontend:**
+- **React 19.1.1** - Framework UI moderne (hooks, composants fonctionnels)
+- **Vite 7.1.2** - Build tool ultra-rapide (HMR, ESM, optimisation)
+- **Tailwind CSS 4.1.11** - Framework CSS utility-first (PostCSS integration)
+- **Electron 37.2.6** - Application desktop native (multi-processus)
+
+---
+
+## 📁 **Backend Modulaire (src/) - Architecture Spécialisée (20 modules)**
 
 ### **Core Business Logic (11 modules)**
 
@@ -43,11 +66,29 @@
 ### **🎯 Orchestration (1 module principal)**
 - **`listeur_de_fichiers_et_dossiers.js`** - Fichier principal coordonnant tous les modules (189 lignes)
 
-## 🆕 **Modularisation Avancée (v2.0.1)**
+## 🆕 **Modularisation Hybride Avancée (v2.0.1)**
 
-### **Nouveaux Modules Ajoutés**
+### **🚀 Frontend React - Nouveautés**
+- **React Architecture** : Composants modulaires, hooks, état local
+- **Vite Integration** : HMR instantané, build optimisé, dev server
+- **Tailwind CSS 4** : Utility-first, PostCSS pipeline, responsive design
+- **Electron Desktop** : Auto-port detection, process management, encoding UTF-8
+- **Dual Deployment** : Web development + Desktop application
+
+### **🔧 Backend - Nouveaux Modules Ajoutés**
 - **`ReportSectionBuilder`** (`src/core/output/`) - Construction spécialisée des sections de rapport
 - **`WorkflowOrchestrator`** (`src/core/`) - Orchestration fine des étapes de workflow
+
+### **⚡ Scripts Hybrides (package.json)**
+```json
+{
+  "dev": "vite",                    // Développement React web
+  "start:window": "electron ui/main.js",  // App desktop Electron
+  "start": "node listeur_de_fichiers_et_dossiers.js",  // CLI original
+  "build:react": "vite build",      // Build production React
+  "build": "npx @yao-pkg/pkg..."    // Compile CLI en .exe
+}
+```
 
 ### **Optimisation Récente**
 - **Séparation des responsabilités** : Construction de rapports vs Orchestration de workflow

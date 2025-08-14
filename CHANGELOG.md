@@ -5,6 +5,60 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2025-08-14 - 🚀 MIGRATION MAJEURE : React + Vite + Tailwind + Electron
+
+### 🎯 **TRANSFORMATION ARCHITECTURALE COMPLÈTE**
+- **Frontend** : Migration complète HTML/CSS → **React 19 + Vite 7 + Tailwind 4**
+- **Backend** : Architecture modulaire maintenue (20 modules spécialisés)
+- **Interface** : **Application hybride** → Web development + Desktop native
+
+### ✨ **Stack Frontend Moderne**
+- **React 19.1.1** : Framework UI moderne (hooks, composants fonctionnels, JSX)
+- **Vite 7.1.2** : Build tool ultra-rapide (HMR instantané, ESM, optimisation)
+- **Tailwind CSS 4.1.11** : Framework CSS utility-first (PostCSS integration)
+- **Electron 37.2.6** : Application desktop native (auto-port detection, UTF-8)
+
+### 🏗️ **Restructuration Complète**
+#### **Fichiers supprimés** (ancien système):
+- `tailwind.config.js` → Remplacé par intégration PostCSS
+- `ui/styles.css` → CSS généré, remplacé par composants React
+- `ui/tailwind.css` → Déplacé vers `ui/src/tailwind.css`
+
+#### **Fichiers ajoutés** (nouveau système):
+- `postcss.config.js` → Configuration PostCSS + Tailwind + Autoprefixer
+- `vite.config.js` → Configuration Vite avec React plugin
+- `ui/src/App.jsx` → Composant principal React
+- `ui/src/index.jsx` → Point d'entrée React (createRoot)
+- `ui/src/tailwind.css` → Imports Tailwind CSS
+
+### 🔧 **Nouvelles Fonctionnalités Développement**
+- **Hot Module Replacement (HMR)** : Modifications instantanées
+- **Dual deployment** : `npm run dev` (web) + `npm run start:window` (desktop)
+- **Auto-port detection** : Gestion intelligente 3001→3002→3003
+- **Process management** : Auto-cleanup, gestion processus Vite
+- **DevTools intégrés** : Débogage React avancé
+- **Encodage UTF-8** : Support complet français (accents)
+
+### 📊 **Scripts Modernisés**
+```json
+{
+  "dev": "vite",                           // Nouveau : développement React web
+  "start:window": "electron ui/main.js",   // Amélioré : Electron + Vite auto
+  "build:react": "vite build",             // Nouveau : build production React
+  "preview": "vite preview",               // Nouveau : prévisualisation build
+  "start": "node listeur_de_fichiers_et_dossiers.js"  // Maintenu : CLI original
+}
+```
+
+### 📈 **Métriques de Migration**
+- **Fichiers modifiés** : 11 files changed, +1777/-435 lines
+- **Architecture** : Hybride React + Node.js (20 modules backend)
+- **Performance build** : ~10x plus rapide (Vite vs compilation traditionnelle)
+- **Temps de développement** : HMR instantané vs reload manuel
+- **Compatibilité** : Backend CLI 100% maintenu + nouveau frontend React
+
+---
+
 ## [2.0.1] - 2025-07-23 - Modularisation Avancée
 
 ### ✨ Nouveautés

@@ -1,50 +1,63 @@
 # 📚 Documentation Complète - Listeur de Fichiers et Dossiers v2.0.1
 
-## 📋 **Documentation Essentielle**
+## � **MIGRATION MAJEURE : Stack Moderne React + Vite + Tailwind + Electron**
+
+**Architecture Hybride** : Backend modulaire (20 modules) + Frontend React moderne
+
+> **NOUVEAU** : Interface utilisateur complètement refaite avec React 19 + Vite 7 + Tailwind 4
+
+---
+
+## �📋 **Documentation Essentielle**
 
 ### 🎯 **Documents Principaux** (`essentiels/`)
 | Document | Description | Priorité |
 |----------|-------------|----------|
-| **[01-architecture.md](essentiels/01-architecture.md)** | 🏗️ Structure détaillée des 20 modules | ⭐⭐⭐ |
-| **[02-utilisation.md](essentiels/02-utilisation.md)** | 💻 Guide complet d'installation et usage | ⭐⭐⭐ |
+| **[01-architecture.md](essentiels/01-architecture.md)** | 🏗️ Structure hybride : 20 modules backend + React frontend | ⭐⭐⭐ |
+| **[02-utilisation.md](essentiels/02-utilisation.md)** | 💻 Guide React + CLI : installation, dev, build | ⭐⭐⭐ |
 
 ### 📊 **Analyses et Tests** (`analyses/`)
 | Document | Description | Priorité |
 |----------|-------------|----------|
-| **[comparaison-architectures.md](analyses/comparaison-architectures.md)** | 🎯 Simple vs Modulaire | ⭐⭐ |
-| **[tests-performances.md](analyses/tests-performances.md)** | 📊 Rapports de tests et performances | ⭐⭐ |
+| **[comparaison-architectures.md](analyses/comparaison-architectures.md)** | 🎯 Simple vs Modulaire vs React | ⭐⭐ |
+| **[tests-performances.md](analyses/tests-performances.md)** | 📊 Tests backend + frontend | ⭐⭐ |
 
 ### 📜 **Historique du Projet** (`historique/`)
 | Document | Description | Priorité |
 |----------|-------------|----------|
-| **[readme-complet-ancien.md](historique/readme-complet-ancien.md)** | 📋 Ancienne documentation complète | ⭐ |
+| **[readme-complet-ancien.md](historique/readme-complet-ancien.md)** | 📋 Ancienne documentation (pre-React) | ⭐ |
+| **[evolution-architecture.md](historique/evolution-architecture.md)** | 🎯 Évolution : Monolithe → Modulaire → React | ⭐ |
 | **[correction-bugs-v2.md](historique/correction-bugs-v2.md)** | 🔧 Rapport de correction v2.0 | ⭐ |
-| **[evolution-architecture.md](historique/evolution-architecture.md)** | 🎯 Évolution vers architecture modulaire | ⭐ |
-| **[plan-nettoyage-projet.md](historique/plan-nettoyage-projet.md)** | 🧹 Anciennes recommandations de nettoyage | ⭐ |
+| **[plan-nettoyage-projet.md](historique/plan-nettoyage-projet.md)** | 🧹 Anciennes recommandations (obsolètes) | ⭐ |
 
 ---
 
 ## 🚀 **Démarrage Rapide**
 
-### **Installation**
+### **🎯 React + Electron (Interface Moderne)**
 ```bash
-npm install && npm test
+npm install && npm test    # Installation + tests
+npm run dev               # Interface web React (recommandé)
+npm run start:window      # Application desktop Electron
 ```
 
-### **Exécution**
+### **💻 CLI Backend (Interface Originale)**
 ```bash
-npm start
-```
-
-### **Compilation**
-```bash
-npm run build
+npm start                 # Version modulaire CLI
+npm run build            # Compiler en .exe standalone
 ```
 
 ---
 
-## 🏗️ **Aperçu de l'Architecture**
+## 🏗️ **Aperçu de l'Architecture Hybride**
 
+### **🚀 Frontend React (ui/src/)**
+- **React 19.1.1** : Composants modernes, hooks, JSX
+- **Vite 7.1.2** : Build ultra-rapide, HMR instantané  
+- **Tailwind CSS 4.1.11** : Utility-first, PostCSS
+- **Electron 37.2.6** : App desktop native
+
+### **🔧 Backend Modulaire (src/)**
 **20 modules spécialisés** organisés en 5 catégories :
 - **Core Logic** (11 modules) : exploration, formatting, statistics, output, workflow
 - **Infrastructure** (2 modules) : notifications, filesystem
