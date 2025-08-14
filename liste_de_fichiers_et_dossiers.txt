@@ -2,7 +2,7 @@
 ==================================================
 LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT
 ==================================================
-Date de génération: 10/08/2025 22:16:43
+Date de génération: 15/08/2025 00:23:19
 Version: 2.0.0
 
 
@@ -10,9 +10,9 @@ Version: 2.0.0
             Configuration de l'analyse            
 ==================================================
 DOSSIER RACINE ANALYSÉ: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers
-DATE DE GÉNÉRATION: 10/08/2025 22:16:43
-STATISTIQUES: 80 éléments (21 dossiers, 59 fichiers)
-TEMPS D'EXPLORATION: 4ms
+DATE DE GÉNÉRATION: 15/08/2025 00:23:19
+STATISTIQUES: 113 éléments (31 dossiers, 82 fichiers)
+TEMPS D'EXPLORATION: 9ms
 MODE: Exploration récursive avec structure arborescente
 
 ⚠️  EXCLUSIONS APPLIQUÉES:
@@ -25,30 +25,40 @@ MODE: Exploration récursive avec structure arborescente
 ==================================================
               STRUCTURE ARBORESCENTE              
 ==================================================
-📁 listeur_de_fichiers_et_dossiers/ (5 dossiers - 8 fichiers)
-├── 1. archives_anciennes_versions/ (8 fichiers)
-│   ├── 1. liste_de_fichiers_et_dossiers copy.txt
-│   ├── 2. liste_dossiers.bat
-│   ├── 3. listeur_backup.js
-│   ├── 4. listeur_de_fichiers.bat
-│   ├── 5. listeur_de_fichiers.js
-│   ├── 6. listeur_de_fichiers.py
-│   ├── 7. listeur_de_fichiers_et_dossiers_legacy.js
-│   └── 8. listeur_de_fichiers_et_dossiers_simple_no_modular.js
-├── 2. docs/ (3 dossiers - 1 fichier)
+📁 listeur_de_fichiers_et_dossiers/ (7 dossiers - 10 fichiers)
+├── 1. archives_anciennes_versions/ (2 dossiers)
+│   ├── 1. v1/ (8 fichiers)
+│   │   ├── 1. liste_de_fichiers_et_dossiers copy.txt
+│   │   ├── 2. liste_dossiers.bat
+│   │   ├── 3. listeur_backup.js
+│   │   ├── 4. listeur_de_fichiers.bat
+│   │   ├── 5. listeur_de_fichiers.js
+│   │   ├── 6. listeur_de_fichiers.py
+│   │   ├── 7. listeur_de_fichiers_et_dossiers_legacy.js
+│   │   └── 8. listeur_de_fichiers_et_dossiers_simple_no_modular.js
+│   └── 2. v2/
+├── 2. dist/ (1 dossier - 1 fichier)
+│   ├── 1. assets/ (2 fichiers)
+│   │   ├── 1. index-Cw0Zl0YE.css
+│   │   └── 2. index-mu_6x6Mn.js
+│   └── 1. index.html
+├── 3. docs/ (3 dossiers - 1 fichier)
 │   ├── 1. analyses/ (2 fichiers)
 │   │   ├── 1. comparaison-architectures.md
 │   │   └── 2. tests-performances.md
-│   ├── 2. essentiels/ (2 fichiers)
+│   ├── 2. essentiels/ (3 fichiers)
 │   │   ├── 1. 01-architecture.md
-│   │   └── 2. 02-utilisation.md
-│   ├── 3. historique/ (4 fichiers)
+│   │   ├── 2. 02-utilisation.md
+│   │   └── 3. 03-migration-react.md
+│   ├── 3. historique/ (6 fichiers)
 │   │   ├── 1. correction-bugs-v2.md
-│   │   ├── 2. evolution-architecture.md
-│   │   ├── 3. plan-nettoyage-projet.md
-│   │   └── 4. readme-complet-ancien.md
+│   │   ├── 2. evolution-architecture-nouvelle.md
+│   │   ├── 3. evolution-architecture-old.md
+│   │   ├── 4. evolution-architecture.md
+│   │   ├── 5. plan-nettoyage-projet.md
+│   │   └── 6. readme-complet-ancien.md
 │   └── 1. README.md
-├── 3. dossier_test_a_ne_pas_supprimer/ (2 dossiers - 1 fichier)
+├── 4. dossier_test_a_ne_pas_supprimer/ (2 dossiers - 1 fichier)
 │   ├── 1. ouiiii/
 │   ├── 2. tstttttt/ (1 dossier)
 │   │   └── 1. ttttttttt/ (2 dossiers)
@@ -67,7 +77,7 @@ MODE: Exploration récursive avec structure arborescente
 │   │           ├── 11. uhkj
 │   │           └── 12. ygjh
 │   └── 1. ffff
-├── 4. src/ (4 dossiers)
+├── 5. src/ (4 dossiers)
 │   ├── 1. config/ (2 fichiers)
 │   │   ├── 1. config-manager.js
 │   │   └── 2. default-config.js
@@ -96,24 +106,47 @@ MODE: Exploration récursive avec structure arborescente
 │   └── 4. utils/ (2 fichiers)
 │       ├── 1. error-handler.js
 │       └── 2. validation-utils.js
-├── 5. test/ (1 fichier)
+├── 6. test/ (1 fichier)
 │   └── 1. test-modules.js
-├── 1. .gitattributes
-├── 2. .gitignore
-├── 3. CHANGELOG.md
-├── 4. LICENSE
-├── 5. README.md
-├── 6. jsconfig.json
-├── 7. package-lock.json
-└── 8. package.json
+├── 7. ui/ (1 dossier - 2 fichiers)
+│   ├── 1. src/ (4 dossiers - 3 fichiers)
+│   │   ├── 1. components/ (7 fichiers)
+│   │   │   ├── 1. Controls.jsx
+│   │   │   ├── 2. ErrorDisplay.jsx
+│   │   │   ├── 3. FileItem.jsx
+│   │   │   ├── 4. FileList.jsx
+│   │   │   ├── 5. FolderInfo.jsx
+│   │   │   ├── 6. Header.jsx
+│   │   │   └── 7. index.js
+│   │   ├── 2. hooks/ (1 fichier)
+│   │   │   └── 1. useFileSystem.js
+│   │   ├── 3. services/ (1 fichier)
+│   │   │   └── 1. fileSystemService.js
+│   │   ├── 4. utils/ (1 fichier)
+│   │   │   └── 1. styles.js
+│   │   ├── 1. App.jsx
+│   │   ├── 2. index.jsx
+│   │   └── 3. tailwind.css
+│   ├── 1. index.html
+│   └── 2. main.js
+├── 01. .gitattributes
+├── 02. .gitignore
+├── 03. CHANGELOG.md
+├── 04. LICENSE
+├── 05. README.md
+├── 06. jsconfig.json
+├── 07. package-lock.json
+├── 08. package.json
+├── 09. postcss.config.js
+└── 10. vite.config.js
 
 
 ==================================================
         RÉSUMÉ DE L'EXPLORATION RÉCURSIVE         
 ==================================================
-TOTAL GÉNÉRAL: 80 éléments trouvés
-DÉTAIL: 21 dossiers, 59 fichiers
-TEMPS D'EXPLORATION: 4ms
+TOTAL GÉNÉRAL: 113 éléments trouvés
+DÉTAIL: 31 dossiers, 82 fichiers
+TEMPS D'EXPLORATION: 9ms
 
 ⚠️  EXCLUSIONS APPLIQUÉES:
    • node_modules/ (dépendances npm)
