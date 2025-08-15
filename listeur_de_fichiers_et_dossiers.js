@@ -42,6 +42,7 @@ const ErrorHandler = require('./src/utils/error-handler');
 /**
  * Classe principale d'orchestration
  * Coordonne tous les modules pour reproduire les fonctionnalités du script original
+ * Compatible CLI, Electron et API programmatique
  */
 class FileSystemExplorerOrchestrator {
   constructor(options = {}) {
@@ -58,7 +59,12 @@ class FileSystemExplorerOrchestrator {
     // Configuration
     this.config = this.configManager.getConfig();
     this.workingDirectory = this.determineWorkingDirectory();
-    this.outputFile = path.join(this.workingDirectory, this.config.files.output.combined);
+    
+    // Options d'exécution (CLI vs Electron vs API)
+    this.isElectronMode = options.electronMode || false;
+    this.targetDirectory = options.targetDirectory || process.argv[2] || this.workingDirectory;
+    this.outputFile = options.outputFile || path.join(this.workingDirectory, this.config.files.output.combined);
+    this.showProgress = options.showProgress !== false; // true par défaut, false pour Electron
     this.scriptName = __filename;
     
     // Workflow orchestrator
@@ -85,13 +91,17 @@ class FileSystemExplorerOrchestrator {
       this.isRunning = true;
       
       // === 1. INITIALISATION ET VALIDATION ===
-      console.log('⏱️ Démarrage du chronomètre...');
+      if (this.showProgress) {
+        console.log('⏱️ Démarrage du chronomètre...');
+      }
       this.performanceTracker.start();
       
       await this.workflowOrchestrator.initializeAndValidate();
 
       // === 2. NOTIFICATION DE DÉMARRAGE ===
-      await this.workflowOrchestrator.showStartNotification();
+      if (this.showProgress) {
+        await this.workflowOrchestrator.showStartNotification();
+      }
 
       // === 3. EXPLORATION RÉCURSIVE ===
       await this.workflowOrchestrator.performExploration();
@@ -103,13 +113,58 @@ class FileSystemExplorerOrchestrator {
       await this.workflowOrchestrator.saveResults();
 
       // === 6. NOTIFICATION DE FIN ===
-      await this.workflowOrchestrator.showCompletionNotification();
+      if (this.showProgress) {
+        await this.workflowOrchestrator.showCompletionNotification();
+      }
 
       // === 7. FINALISATION ===
       this.finalize();
 
     } catch (error) {
       await this.handleError(error);
+    } finally {
+      this.isRunning = false;
+    }
+  }
+
+  /**
+   * API pour exécution programmatique (Electron, tests, etc.)
+   * Retourne les résultats sans popup ni console
+   */
+  async execute() {
+    try {
+      this.isRunning = true;
+      this.performanceTracker.start();
+      
+      // Exploration sans notifications
+      await this.workflowOrchestrator.performExploration();
+      await this.workflowOrchestrator.generateReport();
+      await this.workflowOrchestrator.saveResults();
+
+      const totalDuration = this.performanceTracker.getDurationFromStart();
+      const operationStats = this.fileSystemManager.getOperationStats();
+
+      return {
+        success: true,
+        outputFile: this.outputFile,
+        stats: {
+          directories: this.explorationResults?.directories?.length || 0,
+          files: this.explorationResults?.files?.length || 0,
+          total: (this.explorationResults?.directories?.length || 0) + (this.explorationResults?.files?.length || 0)
+        },
+        executionTime: PerformanceTracker.formatDuration(totalDuration),
+        operations: operationStats
+      };
+
+    } catch (error) {
+      return {
+        success: false,
+        error: error.message,
+        details: this.errorHandler.handleError(error, {
+          operation: 'programmatic_execution',
+          directory: this.targetDirectory
+        }, { silent: true })
+      };
     } finally {
       this.isRunning = false;
     }

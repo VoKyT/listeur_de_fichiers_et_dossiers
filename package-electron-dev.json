@@ -1,0 +1,44 @@
+{
+  "name": "listeur_de_fichiers_et_dossiers",
+  "version": "2.0.1",
+  "description": "Listeur de fichiers et dossiers avec interface React et backend Electron/Node.js",
+  "main": "ui/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
+    "dev:vite": "cd ui && vite",
+    "dev:electron": "nodemon --watch ui/main.js --watch src/electron --exec \"electron ui/main.js\"",
+    "start:window": "electron ui/main.js",
+    "build:react": "cd ui && vite build",
+    "build:electron": "electron-builder",
+    "package": "electron-builder --publish=never",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["electron", "react", "vite", "filesystem", "file-explorer"],
+  "author": "VoKyT",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.1"
+  },
+  "build": {
+    "appId": "com.vokyt.listeur-fichiers",
+    "productName": "Listeur de Fichiers et Dossiers",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "ui/**/*",
+      "src/**/*",
+      "node_modules/**/*"
+    ],
+    "extraFiles": [
+      "package.json"
+    ]
+  }
+}

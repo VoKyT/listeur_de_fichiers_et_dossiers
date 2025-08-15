@@ -2,15 +2,15 @@
 ==================================================
 LISTE RÉCURSIVE DES FICHIERS ET DOSSIERS - FORMAT ARBORESCENT
 ==================================================
-Date de génération: 16/08/2025 01:20:17
+Date de génération: 2025-08-16 00:32:13
 Version: 2.0.0
 
 
 ==================================================
             Configuration de l'analyse            
 ==================================================
-DOSSIER RACINE ANALYSÉ: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers
-DATE DE GÉNÉRATION: 16/08/2025 01:20:17
+DOSSIER RACINE ANALYSÉ: C:\Users\voky\Documents\PROJETS\listeur_de_fichiers_et_dossiers\dossier_test_a_ne_pas_supprimer
+DATE DE GÉNÉRATION: 2025-08-16 00:32:13
 STATISTIQUES: 19 éléments (5 dossiers, 14 fichiers)
 TEMPS D'EXPLORATION: 2ms
 MODE: Exploration récursive avec structure arborescente
@@ -25,7 +25,7 @@ MODE: Exploration récursive avec structure arborescente
 ==================================================
               STRUCTURE ARBORESCENTE              
 ==================================================
-📁 listeur_de_fichiers_et_dossiers/ (2 dossiers - 2 fichiers)
+📁 dossier_test_a_ne_pas_supprimer/ (2 dossiers - 2 fichiers)
 ├── 1. ouiiii/
 ├── 2. tstttttt/ (1 dossier)
 │   └── 1. ttttttttt/ (2 dossiers)

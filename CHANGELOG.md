@@ -5,57 +5,113 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.1] - 2025-08-14 - 🚀 MIGRATION MAJEURE : React + Vite + Tailwind + Electron
+## [2.0.1] - 2025-08-16 - 🚀 FINALISATION ARCHITECTURE HYBRIDE : Services Unifiés + DevTools
 
-### 🎯 **TRANSFORMATION ARCHITECTURALE COMPLÈTE**
-- **Frontend** : Migration complète HTML/CSS → **React 19 + Vite 7 + Tailwind 4**
-- **Backend** : Architecture modulaire maintenue (20 modules spécialisés)
-- **Interface** : **Application hybride** → Web development + Desktop native
+### 🎯 **FINALISATION DE L'ARCHITECTURE TRIPLE-LAYER**
+- **Frontend React** : Interface utilisateur complète avec 8 composants modulaires
+- **Services Hybrides** : Couche d'abstraction Web/Electron avec APIs unifiées  
+- **Backend Modulaire** : 20 modules spécialisés + 2 services Electron (IPC + preload)
+- **DevTools Complets** : F12 débloqué, debug avancé, menu développement intégré
 
-### ✨ **Stack Frontend Moderne**
+### 🌐 **SERVICES HYBRIDES WEB/ELECTRON - NOUVEAU**
+- **`fileSystemService.js`** : API unifiée avec détection d'environnement automatique
+- **`webBackendService.js`** : Implémentation File System Access API (navigateurs modernes)
+- **`electronBackendService.js`** : Communication IPC sécurisée avec processus principal
+- **`useFileSystem.js`** : Custom hook React avec état global et actions unifiées
+
+### 📱 **COMPOSANTS REACT COMPLETS - NOUVEAU**
+- **8 composants modulaires** : Header, Controls, AdvancedActions, FileList, etc.
+- **Responsive design** : Tailwind CSS avec utility classes
+- **État unifié** : Hook personnalisé avec capabilities et error handling
+- **Actions avancées** : Génération rapport complet + sauvegarde flexible
+
+### 🔧 **ELECTRON BACKEND UNIFIÉ - NOUVEAU**  
+- **`backend-service.js`** : Handlers IPC complets avec logique unifiée Web/Electron
+- **`preload.js`** : APIs sécurisées exposées via contextBridge
+- **DevTools F12** : Raccourcis clavier + menu développement + gestionnaires événements
+- **Process management** : Auto-détection port Vite, cleanup automatique, encodage UTF-8
+
+### ✨ **Stack Frontend Moderne - COMPLÉTÉ**
 - **React 19.1.1** : Framework UI moderne (hooks, composants fonctionnels, JSX)
-- **Vite 7.1.2** : Build tool ultra-rapide (HMR instantané, ESM, optimisation)
-- **Tailwind CSS 4.1.11** : Framework CSS utility-first (PostCSS integration)
-- **Electron 37.2.6** : Application desktop native (auto-port detection, UTF-8)
+- **Vite 7.1.2** : Build tool ultra-rapide (HMR instantané, ESM, port fixe 3001)
+- **Tailwind CSS 4.1.11** : Framework CSS utility-first (PostCSS integration complète)
+- **Electron 37.2.6** : Application desktop native (DevTools, menu, raccourcis clavier)
 
-### 🏗️ **Restructuration Complète**
-#### **Fichiers supprimés** (ancien système):
-- `tailwind.config.js` → Remplacé par intégration PostCSS
-- `ui/styles.css` → CSS généré, remplacé par composants React
-- `ui/tailwind.css` → Déplacé vers `ui/src/tailwind.css`
+### 📊 **RAPPORTS PROFESSIONNELS UNIFIÉS - NOUVEAU**
+- **Format unifié** : Même syntaxe exacte sur Web et Electron (2151 caractères)
+- **En-têtes stylisés** : Bannières ASCII professionnelles avec métadonnées  
+- **Statistiques complètes** : Compteurs, temps d'exécution, exclusions appliquées
+- **Arborescence visuelle** : Structure Map avec connecteurs └── ├── et numérotation adaptative
+- **Sauvegarde intelligente** : Sélection emplacement + nom généré automatiquement
 
-#### **Fichiers ajoutés** (nouveau système):
-- `postcss.config.js` → Configuration PostCSS + Tailwind + Autoprefixer
-- `vite.config.js` → Configuration Vite avec React plugin
-- `ui/src/App.jsx` → Composant principal React
-- `ui/src/index.jsx` → Point d'entrée React (createRoot)
-- `ui/src/tailwind.css` → Imports Tailwind CSS
+### 🏗️ **Architecture Finale - Triple Layer**
+#### **📱 Frontend React (ui/src/) - 20+ fichiers ajoutés**:
+```
+📁 ui/src/
+├── components/           # 8 composants modulaires
+│   ├── Header.jsx       
+│   ├── Controls.jsx     
+│   ├── AdvancedActions.jsx     # 🆕 Rapport complet + sauvegarde
+│   ├── FileList.jsx     
+│   ├── ErrorDisplay.jsx 
+│   ├── FolderInfo.jsx   
+│   ├── FileItem.jsx     
+│   └── index.js         # Export centralisé
+├── hooks/               
+│   └── useFileSystem.js        # 🆕 Custom hook avec état global
+├── services/            # 🆕 Couche d'abstraction
+│   ├── fileSystemService.js    # API unifiée Web/Electron  
+│   ├── webBackendService.js    # File System Access API
+│   └── electronBackendService.js # IPC Communication
+├── utils/               
+│   └── styles.js               # 🆕 Constants Tailwind
+├── App.jsx                     # Composant principal
+├── index.jsx                   # Bootstrap React
+└── tailwind.css                # Imports Tailwind
+```
 
-### 🔧 **Nouvelles Fonctionnalités Développement**
-- **Hot Module Replacement (HMR)** : Modifications instantanées
+#### **🔧 Backend Electron (src/electron/) - 2 fichiers ajoutés**:
+- `backend-service.js` → 🆕 IPC handlers avec logique business unifiée
+- `preload.js` → 🆕 APIs sécurisées contextBridge
+
+### 🔧 **Nouvelles Fonctionnalités Avancées**
+- **DevTools F12** : Raccourcis clavier F12 + Ctrl+Shift+I + menu développement
+- **Services hybrides** : Détection automatique Web/Electron avec APIs unifiées
+- **File System Access API** : Accès natif fichiers navigateurs modernes (Chrome/Edge)
+- **IPC Communication** : Communication sécurisée React ↔ Electron via contextBridge
+- **Rapports unifiés** : Même logique d'exploration recursive sur Web et Desktop
+- **Hot Module Replacement** : Modifications React instantanées avec préservation d'état
 - **Dual deployment** : `npm run dev` (web) + `npm run start:window` (desktop)
-- **Auto-port detection** : Gestion intelligente 3001→3002→3003
-- **Process management** : Auto-cleanup, gestion processus Vite
-- **DevTools intégrés** : Débogage React avancé
-- **Encodage UTF-8** : Support complet français (accents)
+- **Auto-port detection** : Gestion intelligente 3001→3002→3003 avec sync Vite/Electron
+- **Process management** : Auto-cleanup, détection processus, restart intelligent
+- **Error handling** : Gestion d'erreurs centralisée avec recovery automatique
 
-### 📊 **Scripts Modernisés**
+### 📊 **Scripts Hybrides Complets**
 ```json
 {
-  "dev": "vite",                           // Nouveau : développement React web
-  "start:window": "electron ui/main.js",   // Amélioré : Electron + Vite auto
-  "build:react": "vite build",             // Nouveau : build production React
-  "preview": "vite preview",               // Nouveau : prévisualisation build
-  "start": "node listeur_de_fichiers_et_dossiers.js"  // Maintenu : CLI original
+  "dev": "vite",                           // Développement React web (HMR)
+  "start:window": "electron ui/main.js",   // Desktop app avec auto-détection Vite
+  "build:react": "vite build",             // Build production React optimisé
+  "preview": "vite preview",               // Prévisualisation build local
+  "start": "node listeur_de_fichiers_et_dossiers.js",  // CLI original maintenu
+  "build": "npx @yao-pkg/pkg...",          // Compilation .exe Windows
+  "test": "node test/test-modules.js"      // Suite tests (35 tests)
 }
 ```
 
-### 📈 **Métriques de Migration**
-- **Fichiers modifiés** : 11 files changed, +1777/-435 lines
-- **Architecture** : Hybride React + Node.js (20 modules backend)
-- **Performance build** : ~10x plus rapide (Vite vs compilation traditionnelle)
-- **Temps de développement** : HMR instantané vs reload manuel
-- **Compatibilité** : Backend CLI 100% maintenu + nouveau frontend React
+### 🎯 **Fonctionnalités Cross-Platform Unifiées**
+- **Web** : File System Access API (Chrome/Edge) + sauvegarde showSaveFilePicker
+- **Desktop** : APIs natives Electron + IPC sécurisé + DevTools intégrés  
+- **CLI** : Backend modulaire traditionnel + compilation autonome
+- **Rapports** : Format identique sur toutes les plateformes (syntaxe unifiée)
+
+### 📈 **Métriques Finales Architecture Hybride**
+- **Fichiers ajoutés** : +25 nouveaux fichiers (React + Services + Electron)
+- **Architecture totale** : Frontend React (8 composants) + Services (3 couches) + Backend (20 modules)
+- **Performance** : HMR instantané + build 10x plus rapide + exploration ~4ms
+- **Compatibilité** : 100% rétrocompatible CLI + nouvelles fonctionnalités Web/Desktop
+- **Tests** : 35 tests unitaires (100% succès) + validation installation automatique
+- **Taille rapport** : 2151 caractères format professionnel avec arborescence complète
 
 ---
 

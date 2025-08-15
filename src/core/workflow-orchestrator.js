@@ -22,18 +22,21 @@ class WorkflowOrchestrator {
   async initializeAndValidate() {
     this.context.progressTracker.startOperation('Initialisation', 3);
 
-    // Validation du répertoire de travail
-    const pathValidation = ValidationUtils.validatePath(this.context.workingDirectory);
+    // Utiliser le répertoire cible ou le répertoire de travail
+    const targetDir = this.context.targetDirectory || this.context.workingDirectory;
+
+    // Validation du répertoire cible
+    const pathValidation = ValidationUtils.validatePath(targetDir);
     if (!pathValidation.isValid) {
-      throw new Error(`Répertoire de travail invalide: ${pathValidation.error}`);
+      throw new Error(`Répertoire cible invalide: ${pathValidation.error}`);
     }
 
     this.context.progressTracker.incrementProgress('Répertoire validé');
 
     // Vérification d'accès au répertoire
-    const accessCheck = await this.context.fileSystemManager.checkAccess(this.context.workingDirectory);
+    const accessCheck = await this.context.fileSystemManager.checkAccess(targetDir);
     if (!accessCheck.success || !accessCheck.accessible) {
-      throw new Error(`Accès refusé au répertoire: ${this.context.workingDirectory}`);
+      throw new Error(`Accès refusé au répertoire: ${targetDir}`);
     }
 
     this.context.progressTracker.incrementProgress('Accès vérifié');
@@ -55,8 +58,10 @@ class WorkflowOrchestrator {
    * Phase d'exploration récursive
    */
   async performExploration() {
-    console.log('🔍 Exploration récursive en cours...');
-    console.log('📁 Analyse de tous les sous-dossiers...');
+    if (this.context.showProgress) {
+      console.log('🔍 Exploration récursive en cours...');
+      console.log('📁 Analyse de tous les sous-dossiers...');
+    }
 
     this.context.progressTracker.startOperation('Exploration récursive');
     this.context.performanceTracker.milestone('exploration_start');
@@ -65,12 +70,15 @@ class WorkflowOrchestrator {
       // Initialisation de l'explorateur
       const explorer = new DirectoryExplorer();
       
+      // Utiliser le répertoire cible
+      const targetDir = this.context.targetDirectory || this.context.workingDirectory;
+      
       // Lancement de l'exploration
       const scriptName = path.basename(this.context.scriptName);
       const exeName = 'listeur_de_fichiers_et_dossiers.exe';
       const outputFileName = path.basename(this.context.outputFile);
       
-      const explorationResults = explorer.explore(this.context.workingDirectory, '', scriptName, exeName, outputFileName);
+      const explorationResults = explorer.explore(targetDir, '', scriptName, exeName, outputFileName);
 
       // Adaptation du format de retour
       this.context.explorationResults = {
@@ -81,12 +89,16 @@ class WorkflowOrchestrator {
       this.context.performanceTracker.milestone('exploration_end');
       const explorationTime = this.context.performanceTracker.getDurationBetween('exploration_start', 'exploration_end');
       
-      console.log(`📊 Résultats: ${this.context.explorationResults.directories.length} dossiers, ${this.context.explorationResults.files.length} fichiers trouvés`);
-      console.log(`⏱️ Temps d'exploration: ${this.context.performanceTracker.constructor.formatDuration(explorationTime)}`);
+      if (this.context.showProgress) {
+        console.log(`📊 Résultats: ${this.context.explorationResults.directories.length} dossiers, ${this.context.explorationResults.files.length} fichiers trouvés`);
+        console.log(`⏱️ Temps d'exploration: ${this.context.performanceTracker.constructor.formatDuration(explorationTime)}`);
+      }
 
       this.context.progressTracker.completeOperation();
     } catch (error) {
-      console.log('🔍 Erreur dans performExploration:', error.message);
+      if (this.context.showProgress) {
+        console.log('🔍 Erreur dans performExploration:', error.message);
+      }
       throw error;
     }
   }

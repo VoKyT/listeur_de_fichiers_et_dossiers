@@ -1,0 +1,29 @@
+=== LISTE DES FICHIERS ET DOSSIERS ===
+Dossier: listeur_de_fichiers_et_dossiers
+Date: 15/08/2025 23:48:39
+Total: 24 éléments
+
+1. 📁 .git [DOSSIER]
+2. 📁 .github [DOSSIER]
+3. 📁 .vscode [DOSSIER]
+4. 📁 archives_anciennes_versions [DOSSIER]
+5. 📁 dist [DOSSIER]
+6. 📁 docs [DOSSIER]
+7. 📁 dossier_test_a_ne_pas_supprimer [DOSSIER]
+8. 📁 node_modules [DOSSIER]
+9. 📁 src [DOSSIER]
+10. 📁 test [DOSSIER]
+11. 📁 ui [DOSSIER]
+12. 📄 .gitattributes [FICHIER]
+13. 📄 .gitignore [FICHIER]
+14. 📄 CHANGELOG.md [FICHIER]
+15. 📄 jsconfig.json [FICHIER]
+16. 📄 LICENSE [FICHIER]
+17. 📄 liste_de_fichiers_et_dossiers.txt [FICHIER]
+18. 📄 listeur_de_fichiers_et_dossiers.exe [FICHIER]
+19. 📄 listeur_de_fichiers_et_dossiers.js [FICHIER]
+20. 📄 package-lock.json [FICHIER]
+21. 📄 package.json [FICHIER]
+22. 📄 postcss.config.js [FICHIER]
+23. 📄 README.md [FICHIER]
+24. 📄 vite.config.js [FICHIER]
