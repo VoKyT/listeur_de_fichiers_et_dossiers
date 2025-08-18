@@ -1,0 +1,29 @@
+{
+  "name": "listeur_de_fichiers_et_dossiers_v2",
+  "version": "2.0.1",
+  "description": "Listeur récursif de fichiers et dossiers avec architecture modulaire avancée - Version 2 (Node.js pur)",
+  "main": "listeur_de_fichiers_et_dossiers.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "start": "node listeur_de_fichiers_et_dossiers.js",
+    "build": "npx @yao-pkg/pkg listeur_de_fichiers_et_dossiers.js --targets win --output listeur_de_fichiers_et_dossiers.exe",
+    "test": "node test/test-modules.js"
+  },
+  "keywords": [
+    "file",
+    "directory",
+    "recursive",
+    "tree",
+    "executable",
+    "nodejs",
+    "windows"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@yao-pkg/pkg": "^6.6.0"
+  }
+}
